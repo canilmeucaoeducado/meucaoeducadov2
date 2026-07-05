@@ -441,7 +441,7 @@ window.addEventListener('load', function() {
       <p style="font-size:14px;color:rgba(241,236,221,0.85);margin-bottom:4px;">Tudo isso por apenas</p>
       <div class="price-tag">12x de R$ 20,37</div>
       <p class="price-note">ou R$ 197,00 à vista</p>
-      <a href="https://chk.eduzz.com/lpos7ejv" class="btn big">QUERO MEU CÃO CALMO E OBEDIENTE</a>
+      <a href="#checkout" class="btn big">QUERO MEU CÃO CALMO E OBEDIENTE</a>
       <p style="margin-top:16px;font-size:13px;color:rgba(241,236,221,0.75);">Acesso imediato • Pagamento seguro • 7 dias de garantia</p>
     </div>
   </div>
@@ -485,11 +485,28 @@ window.addEventListener('load', function() {
 </section>
 
 <!-- ===== CTA FINAL ===== -->
-<section class="bg-forest">
+<section class="bg-forest" id="checkout">
   <div class="container">
     <h2 class="title" style="color:var(--sand);">O passeio mais longo do mundo não vai ensinar seu cão a se controlar.</h2>
     <p class="lead" style="color:rgba(241,236,221,0.8);margin-top:12px;">O processo certo ensina. E ele começa hoje, por R$ 197,00.</p>
-    <a href="https://chk.eduzz.com/lpos7ejv" class="btn big" style="margin-top:18px;">QUERO MEU CÃO CALMO E OBEDIENTE</a>
+    <div id="elements" style="margin-top:24px;"></div>
+    <script src="https://cdn.eduzzcdn.com/sun/bridge/bridge.js" async type="module"></script>
+    <script>
+      (function () {
+        const load = function () {
+            window.Eduzz.Checkout.init({
+              contentId: "1W3ZEGD5W2",
+              target: "elements",
+              errorCover: true
+            });
+        }
+        if (document.readyState === 'complete') {
+            load();
+            return;
+        }
+        window.addEventListener('load', load);
+      })();
+    </script>
   </div>
 </section>
 
@@ -498,7 +515,7 @@ window.addEventListener('load', function() {
 </footer>
 
 <div class="sticky-cta">
-  <a href="#oferta" class="btn">QUERO MEU CÃO CALMO E OBEDIENTE</a>
+  <a href="#checkout" class="btn">QUERO MEU CÃO CALMO E OBEDIENTE</a>
 </div>
 
 <script>
