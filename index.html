@@ -125,9 +125,17 @@
 
   /* Testimonials carousel (simple grid, scrollable) */
   .proof-wrap{overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;}
-  .proof-track{display:flex;gap:12px;padding:0 20px;}
-  .proof-card{flex:0 0 200px;border-radius:10px;overflow:hidden;border:1px solid var(--line);scroll-snap-align:start;}
-  .proof-card img{width:100%;height:260px;object-fit:cover;display:block;}
+  .proof-track{display:flex;gap:16px;padding:0 20px;}
+  .proof-card{flex:0 0 260px;border-radius:12px;overflow:hidden;border:1px solid var(--line);scroll-snap-align:start;}
+  .proof-card img{width:100%;height:325px;object-fit:cover;display:block;}
+  @media(max-width:640px){
+    .proof-track{gap:14px;padding:0 16px;}
+    .proof-card{flex:0 0 86vw;width:86vw;}
+    .proof-card img{height:min(70vh,420px);}
+  }
+  @media(max-width:380px){
+    .proof-card{flex:0 0 90vw;width:90vw;}
+  }
   .proof-caption{font-size:13px;color:#4A5643;text-align:center;margin-top:22px;}
 
   /* Reframe section (nunca mais) */
@@ -174,7 +182,7 @@
   .faq-plus{font-size:20px;color:var(--clay);transition:transform .2s;flex-shrink:0;}
   .faq-item.open .faq-plus{transform:rotate(45deg);}
   .faq-a{max-height:0;overflow:hidden;font-size:14.5px;color:#4A5643;transition:max-height .3s ease;}
-  .faq-item.open .faq-a{max-height:300px;padding-bottom:20px;}
+  .faq-item.open .faq-a{max-height:500px;padding-bottom:20px;}
 
   footer{background:var(--forest);color:rgba(241,236,221,0.6);text-align:center;padding:36px 20px 90px;font-size:12.5px;}
 
@@ -207,6 +215,7 @@
     h2.title{font-size:22px;}
     .mech-name{font-size:28px;}
     .offer-box{padding:22px 16px;}
+    .sticky-cta a.btn{font-size:13px;padding:13px 14px;}
   }
 </style>
 
@@ -348,7 +357,13 @@ window.addEventListener('load', function() {
       <div class="proof-card"><img src="https://canilmeucaoeducado.github.io/meucaoeducado/card5.webp" alt="Depoimento Kiara e Maia" loading="lazy"></div>
       <div class="proof-card"><img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoime_mari_tully.webp" alt="Depoimento Mari e Tully" loading="lazy"></div>
       <div class="proof-card"><img src="https://canilmeucaoeducado.github.io/meucaoeducado/card2.webp" alt="Depoimento Pedro e Rock" loading="lazy"></div>
+      <div class="proof-card"><img src="https://canilmeucaoeducado.github.io/meucaoeducado/card6.webp" alt="Depoimento Nero" loading="lazy"></div>
+      <div class="proof-card"><img src="https://canilmeucaoeducado.github.io/meucaoeducado/card7.webp" alt="Depoimento card7" loading="lazy"></div>
+      <div class="proof-card"><img src="https://canilmeucaoeducado.github.io/meucaoeducado/card4.webp" alt="Depoimento Beto e Max" loading="lazy"></div>
+      <div class="proof-card"><img src="https://canilmeucaoeducado.github.io/meucaoeducado/card3.webp" alt="Depoimento Ros e Duque" loading="lazy"></div>
       <div class="proof-card"><img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_Fred_Yorkshire.webp" alt="Depoimento Fred Yorkshire" loading="lazy"></div>
+      <div class="proof-card"><img src="https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp" alt="Depoimento Jeane e Jade" loading="lazy"></div>
+      <div class="proof-card"><img src="https://canilmeucaoeducado.github.io/meucaoeducado/card8.webp" alt="Depoimento card8" loading="lazy"></div>
     </div>
   </div>
 </section>
