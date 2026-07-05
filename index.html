@@ -136,6 +136,7 @@
     font-size:17px;font-weight:600;color:var(--forest);padding-left:30px;position:relative;
   }
   .never-list li::before{content:'✕';position:absolute;left:0;color:var(--clay);font-weight:800;}
+  .never-list li.positive::before{content:'✓';color:var(--forest);}
 
   /* How it works steps */
   .flow{display:flex;flex-direction:column;gap:0;margin-top:44px;}
@@ -153,6 +154,8 @@
   .offer-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:26px;}
   .offer-list li{font-size:14.5px;color:rgba(241,236,221,0.92);padding-left:24px;position:relative;}
   .offer-list li::before{content:'✓';position:absolute;left:0;color:#D9C48C;font-weight:800;}
+  .offer-list.icons li{padding-left:0;}
+  .offer-list.icons li::before{content:none;}
   .price-tag{font-family:'Inter',sans-serif;font-size:34px;font-weight:700;color:#D9C48C;margin:16px 0 6px;}
   .price-note{font-size:12.5px;color:rgba(241,236,221,0.7);margin-bottom:22px;}
   @media(min-width:640px){
@@ -194,6 +197,16 @@
     .hero{padding:52px 0 40px;}
     h2.title{margin-bottom:14px;}
     a.btn.big{width:100%;}
+    .offer-list.icons li{font-size:14px;line-height:1.55;}
+    .scene{padding:18px 16px;font-size:15px;}
+    .never-list li{font-size:16px;padding-left:26px;}
+  }
+
+  @media(max-width:380px){
+    .hero h1{font-size:26px;}
+    h2.title{font-size:22px;}
+    .mech-name{font-size:28px;}
+    .offer-box{padding:22px 16px;}
   }
 </style>
 
@@ -311,12 +324,12 @@ window.addEventListener('load', function() {
     <span class="eyebrow" style="color:#D9C48C;">Quando esse processo acontece</span>
     <h2 class="title">Isso é o que muda na sua rotina.</h2>
     <ul class="scenes">
-      <li class="scene">Você recebe visita sem precisar trancar seu cão em outro cômodo.</li>
-      <li class="scene">Você passeia olhando a paisagem, não procurando o próximo cachorro na esquina.</li>
-      <li class="scene">Você para de pedir desculpas pelo comportamento dele quando alguém chega em casa.</li>
-      <li class="scene">Você assiste um filme inteiro sem levantar do sofá cinco vezes.</li>
-      <li class="scene">Você fala um comando <b>uma vez</b>, e ele obedece, sem precisar repetir cinco.</li>
-      <li class="scene">Você dorme a noite toda, sem mais um passeio de madrugada só pra ele gastar energia.</li>
+      <li class="scene">Você passeia sem ser arrastado e sem medo de encontrar outro cachorro.</li>
+      <li class="scene">Você recebe visitas sem precisar prender ele no quarto.</li>
+      <li class="scene">Você consegue jantar sem medo dele roubar comida ou ficar pulando em você.</li>
+      <li class="scene">Você chega em casa sem ser derrubado de tanta euforia.</li>
+      <li class="scene">Você deixa objetos pela casa sem medo de encontrar tudo destruído depois.</li>
+      <li class="scene">Você fala o comando uma única vez e ele presta atenção em você.</li>
     </ul>
   </div>
 </section>
@@ -343,8 +356,8 @@ window.addEventListener('load', function() {
 <!-- ===== APRESENTAÇÃO DO PROGRAMA ===== -->
 <section class="bg-paper">
   <div class="container">
-    <span class="eyebrow">Quem descobriu esse processo</span>
-    <h2 class="title">Eu sou veterinário e vi esse padrão se repetir centenas de vezes.</h2>
+    <span class="eyebrow">Quem desenvolveu esse programa</span>
+    <h2 class="title">Me chamo Diego Lima, sou veterinário desde 2006 e vi esse padrão se repetir centenas de vezes.</h2>
     <p class="lead">Trabalho com comportamento canino desde 2008. Atendendo cães agitados dentro de casa, ano após ano, eu via sempre a mesma coisa: pessoa fazendo o passeio cada vez mais longo, e o cão voltando exatamente do mesmo jeito.</p>
     <p class="lead" style="margin-top:16px;">Quando troquei o foco, de gastar energia pra treinar autocontrole, o comportamento começou a mudar em semanas. Não porque o cão estava mais cansado. Alguma coisa mudou por dentro.</p>
     <p class="lead" style="margin-top:16px;">O Programa Meu Cão Educado nasceu pra colocar esse processo na mão de qualquer pessoa, sem precisar de experiência anterior.</p>
@@ -355,11 +368,12 @@ window.addEventListener('load', function() {
 <section class="bg-sand">
   <div class="container">
     <span class="eyebrow">O que muda a partir de agora</span>
-    <h2 class="title">Você para de depender de sorte.</h2>
+    <h2 class="title">Você deixa de colecionar dicas soltas e passa a seguir um método.</h2>
     <ul class="never-list">
-      <li>Improvisar um exercício na hora e torcer pra dar certo</li>
-      <li>Ficar sem saber o que fazer quando o comportamento aparece</li>
-      <li>Testar técnica atrás de técnica sem confiar no processo</li>
+      <li>Esperar que ele mude sozinho com o tempo.</li>
+      <li>Testar uma dica diferente toda semana.</li>
+      <li>Ficar sem saber o que fazer quando um problema aparece.</li>
+      <li class="positive">Seguir um programa com passo a passo claro para desenvolver calma, obediência e autocontrole.</li>
     </ul>
   </div>
 </section>
@@ -372,15 +386,15 @@ window.addEventListener('load', function() {
     <div class="flow">
       <div class="flow-step">
         <div class="flow-num">1</div>
-        <div class="flow-text"><h3>Você identifica o comportamento</h3><p>Puxa a guia? Pula em visita? Não relaxa em casa? Você localiza exatamente o que quer resolver.</p></div>
+        <div class="flow-text"><h3>Escolha o comportamento que mais incomoda hoje.</h3><p>Puxar a guia, latir para tudo, destruir objetos, não obedecer...</p></div>
       </div>
       <div class="flow-step">
         <div class="flow-num">2</div>
-        <div class="flow-text"><h3>Você aplica o exercício certo pra esse caso</h3><p>Em vídeos curtos, com cães reais, direto ao ponto.</p></div>
+        <div class="flow-text"><h3>Aplique as atividades na ordem certa.</h3><p>Cada exercício desenvolve uma habilidade importante como calma, autocontrole, foco e obediência.</p></div>
       </div>
       <div class="flow-step">
         <div class="flow-num">3</div>
-        <div class="flow-text"><h3>Você repete até virar hábito</h3><p>Alguns minutos por dia. O resto o processo mostra na hora certa.</p></div>
+        <div class="flow-text"><h3>Repita treinos curtos de 10 minutos.</h3><p>Seu cão evolui aos poucos e você acompanha a mudança no dia a dia.</p></div>
       </div>
     </div>
   </div>
@@ -398,27 +412,27 @@ window.addEventListener('load', function() {
 <!-- ===== OFERTA ===== -->
 <section class="bg-paper">
   <div class="container">
-    <span class="eyebrow center" style="display:block;text-align:center;">Como você aplica isso no seu cão</span>
-    <h2 class="title center">O Programa Meu Cão Educado é o Sistema de Calma Ativa, na prática.</h2>
-    <p class="lead center" style="margin:0 auto;">Ele responde uma pergunta simples: o que eu faço agora, com o meu cão, nessa situação específica?</p>
-    <p class="lead center" style="margin:14px auto 0;">A partir de agora você nunca mais improvisa um exercício na hora. Nunca mais pesquisa vídeo aleatório sem saber se serve pro seu caso. Sempre existe uma atividade certa pra cada comportamento.</p>
+    <span class="eyebrow center" style="display:block;text-align:center;">COMO VOCÊ APLICA ISSO NO SEU CÃO</span>
+    <h2 class="title center">O Programa Meu Cão Educado coloca o Sistema de Calma Ativa em prática.</h2>
+    <p class="lead center" style="margin:0 auto;">Você não precisa mais adivinhar qual exercício fazer, nem procurar uma dica diferente toda semana.</p>
+    <p class="lead center" style="margin:14px auto 0;font-weight:600;color:var(--forest);">É isso que transforma um monte de exercícios em um método.</p>
     <div class="offer-box">
       <h3>Programa Meu Cão Educado</h3>
-      <p style="font-size:14.5px;color:rgba(241,236,221,0.85);margin-bottom:20px;">Na prática, isso significa:</p>
-      <ul class="offer-list">
-        <li>Uma atividade específica pra cada comportamento, mais de 60 no total</li>
-        <li>Exercícios de autocontrole que reduzem a impulsividade de verdade</li>
-        <li>Passeios sem puxão, visitas sem susto, casa mais tranquila</li>
-        <li>Vídeos curtos, direto ao ponto, com cães reais</li>
-        <li>Funciona pra filhote, adulto, qualquer raça</li>
-        <li>Você revisita sempre que precisar, no seu ritmo</li>
-        <li>Bônus: o que fazer quando o cão não liga pra petisco</li>
-        <li>Bônus: grupo de apoio exclusivo pra continuar evoluindo</li>
+      <p style="font-size:14.5px;color:rgba(241,236,221,0.85);margin-bottom:20px;">Dentro do Programa Meu Cão Educado você encontra:</p>
+      <ul class="offer-list icons">
+        <li>✅ Mais de 60 atividades organizadas para desenvolver calma, autocontrole, obediência, foco e confiança.</li>
+        <li>✅ Vídeos curtos, com demonstrações em cães reais, mostrando exatamente como aplicar cada exercício.</li>
+        <li>✅ Um caminho claro para saber o que fazer primeiro, depois e em seguida.</li>
+        <li>✅ Funciona para filhotes, cães adultos e qualquer raça.</li>
+        <li>✅ Acesso por 5 anos, para revisar sempre que precisar.</li>
+        <li>🎁 Bônus: Como treinar cães que não se interessam por comida</li>
+        <li>🎁 Bônus: Acesso aos "Amigos Próximos" no Instagram com conteúdos exclusivos para alunos</li>
       </ul>
+      <p style="font-size:14px;color:rgba(241,236,221,0.85);margin-bottom:4px;">Tudo isso por apenas</p>
       <div class="price-tag">R$ 197,00</div>
-      <p class="price-note">Acesso por 5 anos. Pagamento único, sem mensalidade.</p>
-      <a href="https://chk.eduzz.com/lpos7ejv" class="btn big">QUERO APLICAR ESSE PROCESSO NO MEU CÃO</a>
-      <p style="margin-top:16px;font-size:13px;color:rgba(241,236,221,0.75);">Acesso imediato · Pagamento seguro · 7 dias de garantia incondicional</p>
+      <p class="price-note">Pagamento único. Sem mensalidade.</p>
+      <a href="https://chk.eduzz.com/lpos7ejv" class="btn big">QUERO MEU CÃO CALMO E OBEDIENTE</a>
+      <p style="margin-top:16px;font-size:13px;color:rgba(241,236,221,0.75);">Acesso imediato • Pagamento seguro • 7 dias de garantia</p>
     </div>
   </div>
 </section>
@@ -450,6 +464,10 @@ window.addEventListener('load', function() {
       <div class="faq-a">Varia de cão pra cão, mas a maioria das pessoas já percebe diferença nas primeiras semanas, desde que aplique o processo do jeito que é mostrado.</div>
     </div>
     <div class="faq-item">
+      <button class="faq-q"><span>Como vou acessar o programa após a compra?</span><span class="faq-plus">+</span></button>
+      <div class="faq-a">O programa é 100% online e você recebe acesso imediato após a compra. Após a confirmação do pagamento, você recebe por e-mail os dados de acesso à plataforma Nutror/Eduzz. As atividades são organizadas por módulos e níveis de dificuldade, com explicações em vídeos, fotos e textos. Você pode acessar quando quiser, no seu ritmo, pelo celular, tablet ou computador.</div>
+    </div>
+    <div class="faq-item">
       <button class="faq-q"><span>E se eu não gostar?</span><span class="faq-plus">+</span></button>
       <div class="faq-a">Você tem 7 dias após a compra para pedir reembolso completo, sem burocracia.</div>
     </div>
@@ -461,7 +479,7 @@ window.addEventListener('load', function() {
   <div class="container center">
     <h2 class="title" style="color:var(--sand);">O passeio mais longo do mundo não vai ensinar seu cão a se controlar.</h2>
     <p class="lead" style="color:rgba(241,236,221,0.8);margin:0 auto 30px;">O processo certo ensina. E ele começa hoje, por R$ 197,00.</p>
-    <a href="https://chk.eduzz.com/lpos7ejv" class="btn big">QUERO MEU CÃO MAIS CALMO E OBEDIENTE</a>
+    <a href="https://chk.eduzz.com/lpos7ejv" class="btn big">QUERO MEU CÃO CALMO E OBEDIENTE</a>
   </div>
 </section>
 
@@ -470,7 +488,7 @@ window.addEventListener('load', function() {
 </footer>
 
 <div class="sticky-cta">
-  <a href="https://chk.eduzz.com/lpos7ejv" class="btn">QUERO MEU CÃO MAIS CALMO</a>
+  <a href="https://chk.eduzz.com/lpos7ejv" class="btn">QUERO MEU CÃO CALMO E OBEDIENTE</a>
 </div>
 
 <script>
