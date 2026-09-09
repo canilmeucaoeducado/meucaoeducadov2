@@ -1,1861 +1,314 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- OTIMIZAÇÃO 2: Cache-Control para proxies — orienta cache de mídias por 1 ano -->
-<!-- CDN RECOMENDADO: GitHub Pages usa TTL de 10min para assets. Para cache longo (1 ano)
-     nas imagens, ativar Cloudflare na frente do domínio e configurar Cache Rules
-     com edge TTL de 31536000s para /*.webp, /*.mp4, /*.woff2 -->
-<meta http-equiv="Cache-Control" content="max-age=31536000">
-<title>Programa Online Meu Cão Educado — Diego Lima, Veterinário</title>
-
-<!-- Open Graph / WhatsApp / Telegram preview -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://canilmeucaoeducado.github.io/meucaoeducado/">
-<meta property="og:title" content="Seu cão mais calmo e obediente, em casa e na rua.">
-<meta property="og:image" content="https://canilmeucaoeducado.github.io/meucaoeducado/preview.webp">
-<meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="Meu Cão Educado">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://canilmeucaoeducado.github.io/meucaoeducado/preview.webp">
-<meta name="twitter:title" content="Seu cão mais calmo e obediente, em casa e na rua.">
-<meta name="twitter:description" content="Você vai aprender comigo o que fazer no dia a dia para construir bons comportamentos no seu cão.">
-
-<!-- Description para Google -->
-<meta name="description" content="Você vai aprender comigo o que fazer no dia a dia para construir bons comportamentos no seu cão.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="dns-prefetch" href="https://connect.facebook.net">
-<link rel="dns-prefetch" href="https://www.clarity.ms">
-<link rel="dns-prefetch" href="https://canilmeucaoeducado.github.io">
-<!-- OTIMIZAÇÃO 10: font-display=swap já incluído na URL do Google Fonts para evitar FOIT -->
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Meu Cão Sem Estresse</title>
 <style>
-  :root {
-    --orange: #5A6B2D;
-    --orange-light: #78874B;
-    --orange-glow: rgba(90,107,45,0.15);
-    --dark: #FFFFFF;
-    --dark2: #E1E1D2;
-    --dark3: #d0d0bc;
-    --dark4: #c2c2aa;
-    --white: #3B4D1E;
-    --white80: rgba(59,77,30,0.85);
-    --white40: rgba(59,77,30,0.55);
-    --white10: rgba(59,77,30,0.10);
-    /* Extra tokens */
-    --navy: #3B4D1E;
-    --royal: #2d3d15;
-    --cta: #5A6B2D;
-    --cta-dark: #3B4D1E;
-    --link: #5A6B2D;
-    --check-green: #5A6B2D;
-    --star: #78874B;
+:root{--g:#31501f;--b:#111;--w:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;color:var(--b);background:var(--w);line-height:1.6}
+.wrap{max-width:760px;width:calc(100% - 36px);margin:auto}
+.center{text-align:center}
+.top{padding:34px 0 12px;color:var(--g);font-weight:700}
+h1{font-size:clamp(44px,9vw,74px);line-height:.98;letter-spacing:-3px;margin:8px 0 22px}
+h2{font-size:clamp(30px,6vw,44px);line-height:1.08;letter-spacing:-1px;margin-bottom:22px}
+h3{font-size:21px;line-height:1.2;margin-bottom:8px}
+p{font-size:19px;margin-bottom:20px}
+.hero{padding-bottom:58px}
+.lead{font-size:clamp(21px,4.5vw,28px);line-height:1.35;max-width:690px;margin:auto}
+.green{color:var(--g)}
+.video{aspect-ratio:16/9;background:var(--b);color:var(--w);border-radius:9px;margin:30px 0;display:flex;align-items:center;justify-content:center}
+.play{width:68px;height:68px;border:2px solid var(--w);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:27px;margin:auto}
+.video small{display:block;margin-top:14px;opacity:.75}
+.btn{display:block;background:var(--g);color:var(--w);text-decoration:none;text-align:center;font-size:20px;font-weight:700;padding:20px 22px;border-radius:7px;margin:16px 0}
+.note{text-align:center;font-size:14px;color:#555}
+.section{padding:64px 0}
+.soft{background:#f4f4f1}
+.quote{border-left:5px solid var(--g);padding:8px 0 8px 20px;font-size:25px;font-weight:700;line-height:1.3;margin:30px 0}
+ul{list-style:none;margin:24px 0}
+li{font-size:19px;margin:14px 0;padding-left:28px;position:relative}
+li:before{content:"✓";color:var(--g);font-weight:900;position:absolute;left:0}
+.steps{counter-reset:n}
+.step{position:relative;padding-left:55px;margin:26px 0}
+.step:before{counter-increment:n;content:counter(n);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--g);color:var(--w);display:flex;align-items:center;justify-content:center;font-weight:700}
+.offer{border:2px solid var(--g);border-radius:9px;padding:38px 28px;text-align:center}
+.name{font-size:31px;font-weight:800;color:var(--g)}
+.price{font-size:50px;font-weight:800;letter-spacing:-2px;margin:14px 0 2px}
+.faq{border-top:1px solid #ddd}
+.faq div{padding:20px 0;border-bottom:1px solid #ddd}
+footer{border-top:1px solid #ddd;padding:28px 0 45px;text-align:center;font-size:13px;color:#555}
+@media(max-width:600px){p,li{font-size:17px}.section{padding:48px 0}.offer{padding:30px 20px}.price{font-size:42px}}
+
+/* OTIMIZAÇÃO MOBILE */
+@media (max-width: 600px) {
+  .wrap {
+    width: calc(100% - 28px);
+    max-width: 100%;
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Outfit', Arial, sans-serif;
-    background: var(--dark);
-    color: var(--white);
-    overflow-x: hidden;
-    line-height: 1.6;
-  }
-
-  /* Ensure all section text defaults to dark readable color on light backgrounds */
-  section { color: var(--white); }
-
-  /* noise texture removida para melhorar INP e performance */
-
-  /* ========== HERO ========== */
   .hero {
-    background: var(--dark2);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    padding: 80px 20px 80px;
-  }
-  
-  .hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center top, rgba(90,107,45,0.12) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  
-  .hero > * {
-    position: relative;
-    z-index: 1;
+    padding: 24px 0 42px;
   }
 
-  .hero-bg-circle {
-    position: absolute;
-    width: 900px;
-    height: 900px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(90,107,45,0.10) 0%, transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    /* CLS FIX: elemento puramente decorativo, fora do fluxo, sem influência no layout */
-    contain: strict;
-    will-change: auto;
-    z-index: 0;
-    inset: auto;
+  .top {
+    padding: 14px 0 8px;
+    font-size: 14px;
+    letter-spacing: .3px;
   }
 
-
-  .hero-lines {
-    position: absolute;
-    inset: 0;
-    background-image: 
-      linear-gradient(rgba(59,77,30,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59,77,30,0.06) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
+  h1 {
+    font-size: clamp(38px, 12vw, 52px);
+    line-height: .98;
+    letter-spacing: -2px;
+    margin: 8px 0 18px;
   }
 
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--orange-glow);
-    border: 1px solid rgba(90,107,45,0.30);
-    border-radius: 100px;
-    padding: 6px 16px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #3B4D1E;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-    animation: fade-up 0.6s ease both;
+  h2 {
+    font-size: clamp(28px, 8vw, 36px);
+    line-height: 1.08;
+    letter-spacing: -.7px;
+    margin-bottom: 18px;
   }
 
-  .badge-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--orange);
-    animation: blink 1.5s infinite;
+  h3 {
+    font-size: 19px;
   }
 
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+  .lead {
+    font-size: 19px;
+    line-height: 1.4;
   }
 
-  .hero-title {
-    font-family: 'Outfit', Arial, sans-serif;
-    font-size: clamp(40px, 7vw, 80px);
-    font-weight: 800;
-    -webkit-text-stroke: 0.5px #3B4D1E;
-    line-height: 1.05;
-    text-align: center;
-    max-width: 860px;
-    letter-spacing: 0.02em;
-    animation: fade-up 0.7s 0.1s ease both;
-    color: #3B4D1E;
-    text-wrap: balance;
-  }
-
-  .hero-title span {
-    color: #3B4D1E;
-    display: block;
-  }
-
-  .hero-sub {
-    font-size: clamp(16px, 2vw, 20px);
-    color: #4B3C1E;
-    text-align: center;
-    max-width: 580px;
-    margin: 24px auto 0;
-    font-weight: 400;
-    animation: fade-up 0.7s 0.2s ease both;
-  }
-
-  .hero-cta {
-    animation: fade-up 0.7s 0.3s ease both;
-  }
-
-  @keyframes fade-up {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .btn-primary {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--cta);
-    color: white;
-    font-family: 'Outfit', Arial, sans-serif;
-    font-weight: 800;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 18px 44px;
-    border-radius: 6px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-    box-shadow: 0 4px 20px rgba(90,107,45,0.40);
-  }
-
-  /* Neon glow via pseudo-element — animates opacity (GPU, sem layout) */
-  .btn-primary::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 6px;
-    box-shadow: 0 0 20px rgba(90,107,45,0.7), 0 0 50px rgba(90,107,45,0.3);
-    opacity: 0.4;
-    animation: neon-pulse 2.5s ease-in-out infinite;
-    pointer-events: none;
-  }
-
-  @keyframes neon-pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.9; }
-  }
-
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(90,107,45,0.45);
-    background: var(--cta-dark);
-    animation: none;
-  }
-
-  .btn-primary:hover::after {
-    opacity: 1;
-    animation: none;
-  }
-
-  .btn-primary:hover::before { opacity: 1; }
-
-  .btn-arrow { font-size: 20px; transition: transform 0.2s; }
-  .btn-primary:hover .btn-arrow { transform: translateX(4px); }
-
-  .hero-trust {
-    margin-top: 32px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 16px;
-    font-weight: 700;
-    color: #3B4D1E;
-    animation: fade-up 0.7s 0.4s ease both;
-  }
-
-  .trust-divider { width: 1px; height: 20px; background: var(--white10); }
-
-  /* ========== VIDEO SECTION ========== */
-  .video-section {
-    background: var(--dark2);
-    padding: 80px 20px;
-    text-align: center;
-  }
-
-  .section-label {
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #5A6B2D;
-    margin-bottom: 14px;
-  }
-
-  .section-title {
-    font-family: 'Outfit', Arial, sans-serif;
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 800;
-    line-height: 1.05;
-    margin-bottom: 20px;
-    color: #3B4D1E;
-  }
-
-  .section-subtitle {
-    color: #4B3C1E;
+  p, li {
     font-size: 17px;
-    max-width: 560px;
-    margin: 0 auto 48px;
+    line-height: 1.55;
   }
 
-  .video-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    border: 1px solid rgba(90,107,45,0.20);
+  .section {
+    padding: 42px 0;
   }
 
-  .video-wrapper::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: 13px;
-    background: linear-gradient(135deg, rgba(90,107,45,0.30), transparent 50%, rgba(90,107,45,0.10));
-    pointer-events: none;
-    z-index: 1;
+  .quote {
+    font-size: 21px;
+    line-height: 1.3;
+    padding-left: 15px;
+    margin: 24px 0;
   }
 
-  .video-wrapper iframe {
-    width: 100%;
-    aspect-ratio: 16/9;
-    display: block;
-    border: none;
+  ul {
+    margin: 20px 0;
   }
 
-  /* ========== WHAT YOU GET ========== */
-  .benefits-section {
-    padding: 100px 20px;
-    background: var(--dark);
-    position: relative;
+  li {
+    margin: 12px 0;
+    padding-left: 25px;
   }
 
-  .benefits-section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%; transform: translateX(-50%);
-    width: 600px; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(90,107,45,0.40), transparent);
+  .steps {
+    margin-top: 10px;
   }
 
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
+  .step {
+    padding-left: 48px;
+    margin: 22px 0;
   }
 
-  .text-center { text-align: center; }
-
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2px;
-    margin-top: 60px;
-    border: 1px solid var(--white10);
-    border-radius: 12px;
-    overflow: hidden;
+  .step:before {
+    width: 34px;
+    height: 34px;
   }
 
-  .benefit-item {
-    background: var(--dark2);
-    padding: 36px 32px;
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-    transition: background 0.3s;
-    position: relative;
+  .offer {
+    padding: 26px 18px;
+    border-radius: 8px;
   }
 
-  .benefit-item:hover {
-    background: var(--dark3);
-  }
-
-  .benefit-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    background: var(--orange-glow);
-    border: 1px solid rgba(90,107,45,0.20);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .benefit-text h3 {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: #3B4D1E;
-  }
-
-  .benefit-text p {
-    font-size: 16px;
-    color: #4B3C1E;
-    line-height: 1.5;
-  }
-
-  /* ========== MODULES ========== */
-  .modules-section {
-    padding: 52px 20px 100px;
-    background: var(--dark);
-  }
-
-  .modules-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-    margin-top: 60px;
-  }
-
-  .module-card {
-    background: #E1E1D2;
-    border: 1px solid rgba(59,77,30,0.10);
-    border-radius: 12px;
-    padding: 32px 28px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s;
-    cursor: default;
-  }
-
-  .module-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-background: linear-gradient(90deg, var(--orange), var(--orange-light));
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .module-card:hover {
-    border-color: rgba(90,107,45,0.40);
-  }
-
-  .module-card:hover::before { opacity: 1; }
-
-  .module-num {
-    font-family: 'Outfit', Arial, sans-serif;
-    font-size: 60px;
-    line-height: 1;
-    color: rgba(59,77,30,0.06);
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    transition: color 0.3s;
-  }
-
-  .module-card:hover .module-num { color: rgba(90,107,45,0.25); }
-
-  .module-emoji { font-size: 32px; margin-bottom: 14px; display: block; }
-
-  .module-card h3 {
-    font-family: 'Outfit', Arial, sans-serif;
-    font-size: 26px;
-    letter-spacing: 0.02em;
-    margin-bottom: 10px;
-    color: #3B4D1E;
-  }
-
-  .module-card p {
-    font-size: 16px;
-    color: #4B3C1E;
-    line-height: 1.6;
-  }
-
-  .module-subtitle {
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #5A6B2D;
-    margin-bottom: 6px !important;
-  }
-
-  .module-lessons {
-    margin-top: 16px;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: #5A6B2D;
-    text-transform: uppercase;
-  }
-
-  /* ========== FOR WHO ========== */
-  .forwhom-section {
-    padding: 100px 20px;
-    background: var(--dark);
-  }
-
-  .forwhom-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    margin-top: 60px;
-  }
-
-  @media (max-width: 768px) {
-    .forwhom-grid { grid-template-columns: 1fr; gap: 40px; }
-  }
-
-  .check-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .check-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 18px 20px;
-    background: var(--dark2);
-    border-radius: 10px;
-    border: 1px solid var(--white10);
-    font-size: 16px;
-    color: #4B3C1E;
-    transition: border-color 0.3s;
-  }
-
-  .check-item:hover { border-color: rgba(90,107,45,0.40); }
-
-  .check-icon {
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    background: var(--check-green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
-    font-size: 11px;
-  }
-
-  .trainer-card {
-    background: var(--dark3);
-    border: 1px solid var(--white10);
-    border-radius: 16px;
-    padding: 40px;
-    text-align: center;
-  }
-
-  .trainer-img-wrap {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    margin: 0 auto 24px;
-    padding: 3px;
-    background: linear-gradient(135deg, #5A6B2D, #78874B);
-    position: relative;
-  }
-
-  .trainer-img-wrap img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .trainer-card h3 {
-    font-family: 'Outfit', Arial, sans-serif;
-    font-size: 32px;
-    letter-spacing: 0.02em;
-    margin-bottom: 6px;
-    color: #3B4D1E;
-  }
-
-  .trainer-card .role {
-    color: var(--link);
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 16px;
-  }
-
-  .trainer-card p {
-    font-size: 16px;
-    color: #4B3C1E;
-    line-height: 1.7;
-  }
-
-  /* ========== PRICING ========== */
-  .pricing-section {
-    padding: 100px 20px;
-    background: var(--dark);
-    text-align: center;
-    position: relative;
-  }
-
-  .price-card {
-    max-width: 520px;
-    margin: 60px auto 0;
-    background: var(--dark3);
-    border: 1px solid rgba(90,107,45,0.35);
-    border-radius: 20px;
-    padding: 52px 48px;
-    position: relative;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  }
-
-  .price-card::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: 21px;
-    background: linear-gradient(135deg, rgba(90,107,45,0.20), transparent, rgba(90,107,45,0.08));
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .price-badge {
-    display: inline-block;
-    background: var(--cta);
-    color: white;
-    font-size: 16px;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 4px;
-    margin-bottom: 24px;
-  }
-
-  .price-original {
-    font-size: 16px;
-    color: #4B3C1E;
-    text-decoration: line-through;
-    margin-bottom: 8px;
-  }
-
-  .price-main {
-    font-family: 'Outfit', Arial, sans-serif;
-    font-size: 28px;
-    color: #3B4D1E;
-    margin-bottom: 4px;
-  }
-
-  .price-value {
-    font-family: 'Outfit', Arial, sans-serif;
-    font-size: clamp(38px, 8vw, 68px);
+  .name {
+    font-size: 27px;
     line-height: 1.1;
-    color: var(--orange);
-    margin-bottom: 24px;
   }
 
-  .price-includes {
-    list-style: none;
-    margin-bottom: 36px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  .price {
+    font-size: 44px;
+    margin: 12px 0 2px;
   }
 
-  .price-includes li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 16px;
-    color: #4B3C1E;
-    text-align: left;
-  }
-
-  .price-includes li::before {
-    content: '✓';
-    width: 20px; height: 20px;
-    border-radius: 50%;
-    background: rgba(90,107,45,0.10);
-    border: 1px solid rgba(90,107,45,0.30);
+  .btn {
+    font-size: 18px;
+    line-height: 1.25;
+    padding: 17px 16px;
+    margin: 14px 0;
+    border-radius: 7px;
+    min-height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
-    color: var(--check-green);
-    flex-shrink: 0;
   }
 
-  .guarantee {
-    margin-top: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--white10);
-    border-radius: 10px;
-    padding: 16px 20px;
-    font-size: 16px;
-    color: #4B3C1E;
+  .note {
+    font-size: 13px;
+    line-height: 1.4;
   }
 
-  .guarantee-icon { font-size: 28px; flex-shrink: 0; }
-
-  /* ========== FAQ ========== */
-  .faq-section {
-    padding: 100px 20px;
-    background: var(--dark);
-  }
-
-  .faq-list {
-    max-width: 720px;
-    margin: 60px auto 0;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--white10);
-  }
-
-  .faq-item {
-    background: #FFFFFF;
-  }
-
-  .faq-q {
-    width: 100%;
-    background: none;
-    border: none;
-    color: #4B3C1E;
-    font-family: 'Outfit', Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: left;
-    padding: 22px 28px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    transition: background 0.2s;
-  }
-
-  .faq-q:hover { background: #E1E1D2; }
-
-  .faq-arrow {
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    background: rgba(90,107,45,0.12);
-    border: 1px solid rgba(90,107,45,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 12px;
-    color: #5A6B2D;
-    transition: transform 0.3s, background 0.2s;
-  }
-
-  .faq-item.open .faq-arrow {
-    transform: rotate(180deg);
-    background: rgba(90,107,45,0.25);
-  }
-
-  .faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s;
-  }
-
-  .faq-item.open .faq-a { max-height: 300px; }
-
-  .faq-a-inner {
-    padding: 0 28px 22px;
-    font-size: 16px;
-    color: #4B3C1E;
-    line-height: 1.7;
-  }
-
-  /* ========== FINAL CTA ========== */
-  .final-cta {
-    padding: 120px 20px;
-    background: var(--dark);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .final-cta::before {
-    content: '';
-    position: absolute;
-    width: 1000px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(90,107,45,0.08) 0%, transparent 70%);
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .final-cta .section-title {
-    max-width: 700px;
-    margin: 0 auto 20px;
-  }
-
-  .final-cta .section-subtitle {
-    margin-bottom: 44px;
-  }
-
-  /* ========== FOOTER ========== */
   footer {
-    background: #3B4D1E;
-    padding: 28px 20px;
-    text-align: center;
-    font-size: 16px;
-    /* OTIMIZAÇÃO 5: cor aumentada de rgba(209,220,237,0.55) para #a8c4d4 — contraste ≥ 4.5:1 sobre #3B4D1E */
-    color: #E1E1D2;
-    border-top: 1px solid rgba(255,255,255,0.15);
+    padding: 24px 12px 36px;
+    font-size: 12px;
+  }
+}
+
+/* Evita zoom e overflow em telas muito estreitas */
+@media (max-width: 360px) {
+  .wrap {
+    width: calc(100% - 22px);
   }
 
-  /* ========== SCROLL ANIMATIONS ========== */
-  .reveal {
-    opacity: 0;
-    transform: translate3d(0,40px,0);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-    will-change: opacity, transform;
+  h1 {
+    font-size: 36px;
   }
 
-  .reveal.visible {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-    will-change: auto;
+  h2 {
+    font-size: 27px;
   }
 
-  /* ========== STICKY CTA ========== */
-  .sticky-bar {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: rgba(59,77,30,0.97);
-    border-top: 1px solid rgba(90,107,45,0.30);
-    padding: 14px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    z-index: 1000;
-    transform: translateY(100%);
-    transition: transform 0.4s ease;
+  .btn {
+    font-size: 17px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
+}
 
-  .sticky-bar.show { transform: translateY(0); }
-
-  .sticky-bar span {
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
-  }
-
-  .sticky-bar span strong { color: #ffffff; }
-
-  .btn-sm {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--cta);
-    color: white;
-    font-family: 'Outfit', Arial, sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    padding: 12px 28px;
-    border-radius: 6px;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: transform 0.2s;
-  }
-
-  .btn-sm:hover { transform: scale(1.03); }
-
-  /* ========== RESPONSIVE ========== */
-  /* ========== MOBILE FIRST — FULL OPTIMIZATION ========== */
-  @media (max-width: 768px) {
-
-    /* HERO */
-    .hero {
-      min-height: auto;
-      padding: 44px 16px 48px;
-    }
-    .hero-bg-circle { width: 360px; height: 360px; }
-    .badge { font-size: 16px; padding: 5px 12px; margin-bottom: 16px; }
-    .hero-title { font-size: clamp(26px, 6vw, 36px); line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
-    .hero-sub { font-size: 16px; margin: 14px auto 24px; padding: 0 2px; max-width: 100%; }
-
-    .btn-primary {
-      width: 100%;
-      justify-content: center;
-      font-size: 16px;
-      padding: 17px 20px;
-      border-radius: 8px;
-      letter-spacing: 0.03em;
-    }
-
-    .hero-trust {
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 4px 14px;
-      width: 100%;
-    }
-    .trust-divider { display: none; }
-    .hero-trust span {
-      background: none;
-      border-radius: 0;
-      padding: 0;
-      font-size: 16px;
-      font-weight: 700;
-      text-align: center;
-      color: #3B4D1E;
-    }
-
-    /* VIDEO */
-    .video-section { padding: 48px 16px; }
-    .video-section .section-subtitle { font-size: 16px; margin-bottom: 20px; }
-
-    /* BENEFITS */
-    .benefits-section { padding: 48px 16px; }
-    .benefits-grid { grid-template-columns: 1fr; margin-top: 28px; }
-    .benefit-item { padding: 18px 16px; gap: 14px; }
-    .benefit-icon { width: 38px; height: 38px; font-size: 18px; }
-    .benefit-text h3 { font-size: 16px; }
-    .benefit-text p { font-size: 16px; }
-
-    /* MODULES */
-    .modules-section { padding: 32px 16px 48px; }
-    .modules-grid { grid-template-columns: 1fr; gap: 8px; margin-top: 28px; }
-    .module-card { padding: 20px 18px; }
-    .module-card h3 { font-size: 20px; }
-    .module-card p { font-size: 16px; }
-    .module-num { font-size: 40px; }
-    .module-emoji { font-size: 24px; margin-bottom: 8px; }
-
-    /* FOR WHOM */
-    .forwhom-section { padding: 48px 16px; }
-    .forwhom-grid { grid-template-columns: 1fr; gap: 28px; margin-top: 28px; }
-    .check-item { padding: 14px 14px; font-size: 16px; gap: 12px; }
-    .check-icon { width: 20px; height: 20px; font-size: 10px; }
-    .trainer-card { padding: 26px 20px; }
-    .trainer-img-wrap { width: 110px; height: 110px; }
-    .trainer-card h3 { font-size: 26px; }
-    .trainer-card p { font-size: 16px; }
-
-    /* PRICING */
-    .pricing-section { padding: 48px 16px; }
-    .price-card { padding: 28px 16px; margin-top: 28px; border-radius: 14px; }
-    .price-value { font-size: 60px; }
-    .price-includes li { font-size: 16px; }
-    .price-includes { margin-bottom: 24px; gap: 10px; }
-    .guarantee { font-size: 16px; padding: 14px 16px; }
-    .guarantee-icon { font-size: 22px; }
-
-    /* FAQ novo */
-    .faq2-question { font-size: 16px; padding: 18px 0; }
-    .faq2-answer { font-size: 16px; padding-left: 24px; }
-
-    /* FINAL CTA */
-    .final-cta { padding: 56px 16px; }
-    .final-cta .btn-primary {
-      width: 100%;
-      justify-content: center;
-      font-size: 16px;
-      padding: 17px 20px;
-    }
-    .final-cta p { font-size: 16px; }
-
-    /* SECTION TITLES */
-    .section-title { font-size: clamp(24px, 7vw, 40px); }
-    .section-subtitle { font-size: 16px; }
-    .section-label { font-size: 16px; }
-    .line-accent { margin-bottom: 14px; }
-
-    /* QUEM SOU EU */
-    .quem-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
-
-    /* Proof carousel */
-    .proof-section { padding: 48px 0 52px; }
-    .proof-card { flex: 0 0 86vw; width: 86vw; height: auto; min-height: 300px; padding: 20px 18px; }
-    .proof-carousel { padding: 10px 16px 18px; gap: 12px; }
-    .proof-arrow { display: none; }
-
-    /* Inline sections */
-    .use-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
-
-    /* Seções gerais — padding reduzido */
-    section { padding-left: 16px !important; padding-right: 16px !important; }
-  }
-
-  /* Very small screens */
-  @media (max-width: 380px) {
-    .hero-title { font-size: 24px; }
-    .hero-sub { font-size: 16px; }
-    .section-title { font-size: 22px; }
-    .btn-sm { flex: 1; justify-content: center; }
-    .proof-card { flex: 0 0 90vw; width: 90vw; }
-  }
-
-  .orange { color: #3B4D1E; }
-
-  /* Horizontal line accent */
-  .line-accent {
-    width: 60px; height: 3px;
-    background: linear-gradient(90deg, #5A6B2D, #78874B);
-    border-radius: 3px;
-    margin: 0 auto 20px;
-  }
 </style>
-<!-- OTIMIZAÇÃO 8: GitHub Pages não suporta configuração de cabeçalhos HTTP customizados
-     (X-Frame-Options, HSTS, COOP, CSP). Para aplicar esses headers, seria necessário
-     migrar para Netlify (netlify.toml) ou Vercel (vercel.json).
-     Se migrar futuramente, usar:
-       X-Frame-Options: SAMEORIGIN
-       Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-       Cross-Origin-Opener-Policy: same-origin
-       Content-Security-Policy: default-src 'self'; ...
--->
-<!-- Meta Pixel Code — carregado após load para não bloquear thread principal -->
+
+<!-- Meta Pixel -->
 <script>
-window.addEventListener('load', function() {
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
   n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1336628157581322');
-  fbq('track', 'PageView');
-});
+  fbq('init','1336628157581322');
+  fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1" alt=""></noscript>
 
-<!-- Microsoft Clarity — carregado após load para não bloquear thread principal -->
-<script>
-window.addEventListener('load', function() {
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "w3fnz1hr1l");
-});
 </script>
-<!-- End Microsoft Clarity -->
 </head>
 <body>
 
-<!-- OTIMIZAÇÃO 6: tag <main> para landmark de acessibilidade (WCAG, screen readers) -->
-<main>
-
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="hero-bg-circle"></div>
-  <div class="hero-lines"></div>
-
-  <div class="badge">
-    <span class="badge-dot"></span>
-    Programa Completo Online
-  </div>
-
-  <h1 class="hero-title">
-    Seu cão mais calmo e obediente, em casa e na rua.
-  </h1>
-
-  <p class="hero-sub">Você vai aprender comigo o que fazer no dia a dia para construir bons comportamentos no seu cão.</p>
-
-  <div class="hero-mockup">
-    <img src="https://canilmeucaoeducado.github.io/meucaoeducado/preview.webp" alt="Prévia do Programa Meu Cão Educado" width="620" height="auto" fetchpriority="high" decoding="async" style="width:100%; max-width:620px; height:auto; display:block; margin:0 auto; border-radius:16px; box-shadow:0 12px 30px rgba(0,0,0,0.14);">
-    <p style="margin-top:12px; font-size:16px; color:#4B3C1E; text-align:center;">Criado por <strong>Diego Lima</strong> · Veterinário Especialista em Comportamento Canino</p>
-  </div>
-
-  <div class="hero-trust">
-    <span>* Acesso imediato</span>
-    <div class="trust-divider"></div>
-    <span>* Para filhote e adulto</span>
-    <div class="trust-divider"></div>
-    <span>* Para qualquer raça</span>
-    <div class="trust-divider"></div>
-    <span>* Sem punição</span>
-  </div>
+<header class="hero">
+<div class="wrap center">
+<div class="top">PROGRAMA MEU CÃO SEM ESTRESSE</div>
+<h1>Seu cão não precisa viver <span class="green">no limite.</span></h1>
+<p class="lead">Um programa prático para ajudar seu cão a lidar melhor com medo, estresse, reatividade e situações que fazem ele perder o controle.</p>
+<a class="btn" href="#oferta">QUERO AJUDAR MEU CÃO</a>
+<p class="note">Acesso imediato · Programa online · Exercícios práticos</p>
+</div>
+</header>
+<section class="section">
+<div class="wrap">
+<h2>Isso aqui é pra você que tem um cachorro que parece estar sempre no limite.</h2>
+<p>Um cachorro que sai na rua e já fica olhando para todos os lados.</p>
+<p>Que vê outro cachorro e late, puxa a guia ou tenta avançar.</p>
+<p>Que se assusta com pessoas, carros, motos, barulhos, trovões ou fogos de artifício.</p>
+<p>Ou que simplesmente não consegue relaxar.</p>
+<p>E talvez você já tenha tentado de tudo.</p>
+<p>Petisco, comando, puxão na guia, falar mais alto, distrair, evitar os lugares, mudar o horário do passeio...</p>
+<div class="quote">E mesmo assim, quando aparece aquele gatilho, parece que tudo desaparece.<br>Seu cachorro não te escuta.</div>
+</div>
 </section>
 
-
-<!-- ============ IDENTIFICAÇÃO ============ -->
-<section style="padding: 80px 20px; background: var(--dark);">
-  <div class="container reveal" style="max-width: 680px;">
-    <h2 class="section-title" style="text-align: center; margin-bottom: 44px;">
-      Este programa é para você que tem um cão que…
-    </h2>
-    <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
-      <li style="display: flex; align-items: center; gap: 16px; padding: 10px 0; font-size: 17px; font-weight: 400; color: #3B4D1E;">
-        ✅ Puxa durante os passeios
-      </li>
-      <li style="display: flex; align-items: center; gap: 16px; padding: 10px 0; font-size: 17px; font-weight: 400; color: #3B4D1E;">
-        ✅ Pula nas visitas
-      </li>
-      <li style="display: flex; align-items: center; gap: 16px; padding: 10px 0; font-size: 17px; font-weight: 400; color: #3B4D1E;">
-        ✅ Late para cães, pessoas ou barulhos
-      </li>
-      <li style="display: flex; align-items: center; gap: 16px; padding: 10px 0; font-size: 17px; font-weight: 400; color: #3B4D1E;">
-        ✅ Parece acelerado o tempo inteiro
-      </li>
-      <li style="display: flex; align-items: center; gap: 16px; padding: 10px 0; font-size: 17px; font-weight: 400; color: #3B4D1E;">
-        ✅ Não consegue relaxar dentro de casa
-      </li>
-      <li style="display: flex; align-items: center; gap: 16px; padding: 10px 0; font-size: 17px; font-weight: 400; color: #3B4D1E;">
-        ✅ Ignora você quando existe alguma distração
-      </li>
-      <li style="display: flex; align-items: center; gap: 16px; padding: 10px 0; font-size: 17px; font-weight: 400; color: #3B4D1E;">
-        ✅ Faz você repetir o mesmo comando várias vezes
-      </li>
-    </ul>
-  </div>
+<section class="section soft">
+<div class="wrap">
+<h2>O problema pode estar no momento em que você tenta resolver.</h2>
+<p>Eu conheço bem esse problema porque é exatamente esse tipo de situação que eu vejo nos meus atendimentos.</p>
+<p>E uma coisa que eu percebi é que, na maioria das vezes, as pessoas estão tentando resolver o problema no momento errado.</p>
+<p>Elas tentam ensinar o cachorro quando ele já está completamente tomado pelo medo, pelo estresse ou pela excitação.</p>
+<p>E nesse momento fica muito mais difícil.</p>
+<div class="quote">O treinamento começa antes do seu cão chegar ao limite.</div>
+</div>
 </section>
 
-<!-- ============ PROVA SOCIAL ============ -->
-<section class="proof-section">
-  <div class="container">
-    <div class="text-center reveal">
-      <h2 class="section-title">Veja o que acontece<br><span class="orange">em poucas semanas</span></h2>
-    </div>
-  </div>
-
-  <!-- Carrossel sem padding lateral para sangrar até as bordas -->
-  <div class="proof-carousel-wrap reveal">
-    <div class="proof-carousel" id="proofCarousel">
-
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/Depoimentos_Dior.webp" alt="Depoimento Dior" width="280" height="350" loading="eager" fetchpriority="low" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_ramon_doguealemao.webp" alt="Depoimento Ramon e Dogue Alemão" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_rosangela_fly.webp" alt="Depoimento Rosangela e Fly" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card5.webp" alt="Depoimento Kiara e Maia" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoime_mari_tully.webp" alt="Depoimento Mari e Tully" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card2.webp" alt="Depoimento Pedro e Rock" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card6.webp" alt="Depoimento Nero" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card7.webp" alt="Depoimento card7" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card4.webp" alt="Depoimento Beto e Max" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card8.webp" alt="Depoimento card8" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card3.webp" alt="Depoimento Ros e Duque" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_Fred_Yorkshire.webp" alt="Depoimento Fred Yorkshire" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp" alt="Depoimento Jeane e Jade" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-
-    </div>
-
-    <!-- Setas de navegação -->
-    <button class="proof-arrow proof-arrow-prev" onclick="scrollProof(-1)" aria-label="Anterior">&#8592;</button>
-    <button class="proof-arrow proof-arrow-next" onclick="scrollProof(1)" aria-label="Próximo">&#8594;</button>
-
-    <!-- Dots -->
-    <div class="proof-dots" id="proofDots"></div>
-  </div>
-
-
-
+<section class="section">
+<div class="wrap">
+<h2>Por isso eu criei o Meu Cão Sem Estresse.</h2>
+<p>Um programa para ajudar você a entender o que está acontecendo com o seu cão e, principalmente, saber o que fazer para começar a mudar esse comportamento.</p>
+<p>Aqui você vai aprender a reduzir a sobrecarga de estímulos, criar momentos de descanso e descompressão, trabalhar o foco, aumentar a confiança do seu cão e ensinar ele a lidar melhor com situações que hoje fazem ele perder o controle.</p>
+<p>E tudo isso através de exercícios práticos.</p>
+<p>Você não precisa passar horas estudando teoria.</p>
+<p>Você vai assistir a uma aula curta, entender o que está acontecendo e colocar em prática.</p>
+</div>
 </section>
 
-<!-- ============ O QUE ESTÁ INCLUÍDO ============ -->
-<section style="padding: 80px 20px; background: var(--dark);">
-  <div class="container reveal" style="max-width: 760px;">
-    <div class="text-center" style="margin-bottom: 48px;">
-      <div class="line-accent"></div>
-      <h2 class="section-title">O que pode mudar na sua <span class="orange">rotina com seu cão?</span></h2>
-    </div>
-    <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px;">
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6;">🐶</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Mais calma dentro de casa</strong> - Ajude seu cão a desacelerar, relaxar e aprender a ficar tranquilo mesmo quando não está acontecendo nada.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🚶</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Passeios mais tranquilos</strong> - Desenvolva atenção, autocontrole e controle de impulsos para reduzir aquela loucura de puxar, correr atrás de tudo e não prestar atenção em você.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🎯</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Mais atenção em você</strong> - Ensine seu cão a escolher prestar atenção em você mesmo diante de pessoas, cães, cheiros e outras distrações.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🧠</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Um cão mentalmente mais satisfeito</strong> - Atividades de faro, tomada de decisão e estimulação mental para fazer seu cão pensar, se concentrar e usar o cérebro.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🏠</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Menos tédio e comportamentos indesejados</strong> - Ofereça atividades que ocupam a mente e ajudam seu cão a encontrar formas melhores de gastar energia. Ao invés dele destruir coisas, roer móveis, roubar objetos ou aprontar pela casa.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">💪</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Mais confiança e controle do corpo</strong> - Exercícios para desenvolver coordenação, consciência corporal e confiança, especialmente úteis para cães inseguros, agitados ou estabanados.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🧩</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Mais controle diante dos impulsos</strong> - Ajude seu cão a pensar antes de agir em situações que normalmente fazem ele pular, latir, perseguir, roubar comida ou perder completamente a cabeça.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🐕</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Um cão mais preparado para a vida real</strong> - Treinos que desenvolvem obediência, tomada de decisão, autocontrole e capacidade de lidar melhor com diferentes situações do dia a dia.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">⏱️</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Treinos que cabem na sua rotina</strong> - São mais de 60 atividades pensadas para sessões curtas, que você consegue encaixar na rotina mesmo quando tem apenas alguns minutos disponíveis.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🎁</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>E ainda tem os bônus</strong> - Você também recebe conteúdos para aprender a motivar seu cão, conduzir os treinos e evitar os erros mais comuns, além de acesso aos meus <strong>Amigos Próximos no Instagram</strong>, com conteúdos exclusivos dos meus atendimentos presenciais.</p>
-      </li>
-    </ul>
-  </div>
-
-
-
+<section class="section soft">
+<div class="wrap">
+<h2>O que você vai encontrar dentro do programa</h2>
+<ul>
+<li>Exercícios para trabalhar o foco perto de gatilhos</li>
+<li>Treinamento para ajudar seu cão a relaxar</li>
+<li>Estratégias para cães que latem na janela ou na porta</li>
+<li>Orientações para cães que têm medo de pessoas</li>
+<li>Estratégias para cães com medo de sair na rua</li>
+<li>Treinamento para cães que têm medo de entrar ou andar de carro</li>
+<li>Orientações para medo de barulhos, trovões e fogos de artifício</li>
+<li></li>
+</ul>
+</div>
 </section>
 
-<!-- ============ PRÉVIA DAS ATIVIDADES ============ -->
-<section style="padding: 80px 20px; background: var(--dark2); position: relative; overflow: hidden;">
-  <div style="position:absolute; width:600px; height:400px; border-radius:50%; background:radial-gradient(circle, rgba(90,107,45,0.07) 0%, transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none;"></div>
-  <div class="container">
-    <div class="text-center reveal" style="margin-bottom: 40px;">
-      <div class="line-accent"></div>
-      <h2 class="section-title">Confira uma prévia <span class="orange">do que você vai receber:</span></h2>
-    </div>
-    <div class="reveal" style="max-width: 800px; margin: 0 auto; border-radius: 16px; overflow: hidden; border: 1px solid rgba(90,107,45,0.20); box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
-      <img src="https://canilmeucaoeducado.github.io/meucaoeducado/previsaNutrorPassearSemPuxar.png" alt="Prévia das atividades do Programa Meu Cão Educado" width="1080" height="1055" loading="lazy" decoding="async" style="width:100%; height:auto; display:block;">
-    </div>
-
-    <div class="reveal" style="max-width: 380px; margin: 40px auto 0; border-radius: 16px; overflow: hidden; border: 1px solid rgba(90,107,45,0.20); box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
-      <div style="position:relative; width:100%; aspect-ratio:9/16; cursor:pointer; background:#001f2b;" onclick="toggleVideoPastorBelga()">
-        <!-- OTIMIZAÇÃO 4: preload="none" para evitar download desnecessário no carregamento inicial -->
-        <video id="videoPastorBelga" src="https://canilmeucaoeducado.github.io/meucaoeducado/previapasseio.mp4" poster="https://canilmeucaoeducado.github.io/meucaoeducado/thumbpreviapasseio.webp" playsinline preload="none" style="width:100%; height:100%; display:block; object-fit:cover;">
-          <track kind="captions" src="" srclang="pt" label="Português" default>
-        </video>
-        <div id="playBtnPastorBelga" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(0,42,58,0.55); transition:opacity 0.2s;">
-          <div style="width:72px; height:72px; border-radius:50%; background:#B4B496; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 28px rgba(0,0,0,0.4);">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><polygon points="6,3 20,12 6,21" fill="#f8f9f9"/></svg>
-          </div>
-          <span style="margin-top:14px; color:#B4B496; font-family:'Outfit',sans-serif; font-size:16px; font-weight:600; letter-spacing:0.5px; text-shadow:0 1px 4px rgba(0,0,0,0.6);">Assista uma prévia do programa</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="section">
+<div class="wrap">
+<h2>Não espere seu cachorro piorar para começar.</h2>
+<p>Quanto mais ele repete esse mau comportamento, mais enraizado ele vai ficando na mente dele.</p>
+<p>Então, se hoje você já está evitando passeios, mudando de calçada, deixando de receber pessoas ou pensando duas vezes antes de levar seu cachorro para determinados lugares, talvez seja hora de fazer alguma coisa diferente.</p>
+<div class="quote">Você não precisa esperar a situação ficar pior para começar a agir.</div>
+</div>
 </section>
 
-<style>
-  /* ========== PROOF SECTION ========== */
-  .proof-section {
-    padding: 100px 0 80px;
-    background: var(--dark2);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .proof-section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%; transform: translateX(-50%);
-    width: 600px; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(90,107,45,0.40), transparent);
-  }
-
-  .proof-section .container {
-    padding: 0 20px;
-  }
-
-  /* Wrap do carrossel: full-width com fade nas bordas */
-  .proof-carousel-wrap {
-    position: relative;
-    margin-top: 52px;
-  }
-
-  .proof-carousel-wrap::before,
-  .proof-carousel-wrap::after {
-    display: none;
-  }
-
-  /* O trilho de cards */
-  .proof-carousel {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 12px 60px 24px;
-    cursor: grab;
-    will-change: scroll-position;
-    contain: layout style;
-  }
-  .proof-carousel:active { cursor: grabbing; }
-  .proof-carousel::-webkit-scrollbar { display: none; }
-
-  /* Cards */
-  .proof-card {
-    background: var(--dark2);
-    border: 1px solid var(--white10);
-    border-radius: 16px;
-    padding: 32px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    transition: border-color 0.3s, transform 0.3s;
-    position: relative;
-    overflow: hidden;
-    flex: 0 0 300px;
-    width: 300px;
-    height: 375px;
-    scroll-snap-align: start;
-    contain: layout style paint;
-  }
-
-  .proof-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--orange), var(--orange-light));
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .proof-card:hover {
-    border-color: rgba(90,107,45,0.30);
-  }
-
-  .proof-card:hover::before { opacity: 1; }
-
-  .proof-dog-photo {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid rgba(90,107,45,0.40);
-    flex-shrink: 0;
-  }
-
-  .proof-dog-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .proof-stars {
-    color: var(--orange);
-    font-size: 16px;
-    letter-spacing: 2px;
-  }
-
-  .proof-text {
-    font-size: 16px;
-    color: var(--white80);
-    line-height: 1.75;
-    font-style: italic;
-    flex: 1;
-  }
-
-  .proof-author {
-    border-top: 1px solid var(--white10);
-    padding-top: 14px;
-  }
-
-  .proof-author-name {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--white);
-  }
-
-  .proof-author-dog {
-    font-size: 16px;
-    color: var(--white40);
-    margin-top: 3px;
-  }
-
-  /* Setas */
-  .proof-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-60%);
-    z-index: 3;
-    background: var(--dark3);
-    border: 1px solid rgba(90,107,45,0.25);
-    color: var(--orange);
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s, border-color 0.2s;
-  }
-  .proof-arrow:hover { background: rgba(90,107,45,0.15); border-color: var(--orange); }
-  .proof-arrow-prev { left: 12px; }
-  .proof-arrow-next { right: 12px; }
-
-  /* Dots */
-  .proof-dots {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 20px;
-  }
-
-  .proof-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--white10);
-    border: 1px solid rgba(90,107,45,0.20);
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-  }
-
-  .proof-dot.active {
-    background: var(--orange);
-    transform: scale(1.3);
-  }
-
-  /* Mobile */
-  @media (max-width: 768px) {
-    .proof-section { padding: 56px 0 60px; }
-    .proof-card { flex: 0 0 260px; width: 260px; height: 325px; padding: 22px 20px; }
-    .proof-carousel { padding: 12px 24px 20px; }
-    .proof-arrow { display: none; }
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-  (function() {
-    const carousel = document.getElementById('proofCarousel');
-    const dotsWrap = document.getElementById('proofDots');
-    if (!carousel || !dotsWrap) return;
-    const cards = carousel.querySelectorAll('.proof-card');
-    const cardCount = cards.length;
-
-    // Gerar dots
-    cards.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.className = 'proof-dot' + (i === 0 ? ' active' : '');
-      dot.addEventListener('click', () => scrollToCard(i));
-      dotsWrap.appendChild(dot);
-    });
-
-    function getDots() { return dotsWrap.querySelectorAll('.proof-dot'); }
-
-    // OTIMIZAÇÃO 9: cardWidth cacheado e atualizado via ResizeObserver para evitar
-    // leitura de offsetWidth dentro do handler de scroll (reflow forçado de 23ms).
-    let cachedCardWidth = cards[0].offsetWidth + 20;
-    const ro = new ResizeObserver(() => {
-      cachedCardWidth = cards[0].offsetWidth + 20;
-    });
-    ro.observe(cards[0]);
-
-    function updateDots() {
-      const scrollLeft = carousel.scrollLeft;
-      const active = Math.round(scrollLeft / cachedCardWidth);
-      getDots().forEach((d, i) => d.classList.toggle('active', i === active));
-    }
-
-    function scrollToCard(i) {
-      carousel.scrollTo({ left: cachedCardWidth * i, behavior: 'smooth' });
-    }
-
-    window.scrollProof = function(dir) {
-      const scrollLeft = carousel.scrollLeft;
-      const current = Math.round(scrollLeft / cachedCardWidth);
-      const next = Math.max(0, Math.min(cardCount - 1, current + dir));
-      scrollToCard(next);
-    };
-
-    carousel.addEventListener('scroll', updateDots, { passive: true });
-
-    // Drag to scroll (desktop)
-    let isDown = false, startX, scrollStart;
-    carousel.addEventListener('mousedown', e => { isDown = true; startX = e.pageX; scrollStart = carousel.scrollLeft; });
-    carousel.addEventListener('mouseleave', () => isDown = false);
-    carousel.addEventListener('mouseup', () => isDown = false);
-    carousel.addEventListener('mousemove', e => {
-      if (!isDown) return;
-      e.preventDefault();
-      carousel.scrollLeft = scrollStart - (e.pageX - startX);
-    });
-  })();
-  }); // fim DOMContentLoaded
-</script>
-
-
-
-
-<!-- ============ PRICING ============ -->
-<section id="pricing" class="pricing-section">
-  <div class="container">
-    <div class="price-card reveal">
-      <div class="price-badge">Oferta Especial</div>
-      <div class="price-main" style="font-size:clamp(38px,8vw,68px); font-family:'Outfit',sans-serif; color:var(--orange); line-height:1.1; margin-bottom:4px;">R$ 27,00</div>
-      <div style="font-size:16px; color:#4B3C1E; margin-bottom:8px;">por mês, cancele quando quiser</div>
-
-
-      <ul class="price-includes">
-        <li>Mais de 60 atividades e exercícios</li>
-        <li>9 Módulos completos</li>
-        <li>Exclusivo: Módulo Controle de Impulsos</li>
-        <li>Atividades com passo a passo detalhado</li>
-        <li>Videoaulas + fotos + textos</li>
-        <li>Conteúdo exclusivo no Instagram (casos reais)</li>
-        <li>Acesso enquanto sua assinatura estiver ativa</li>
-        <li>7 Dias de garantia</li>
-      </ul>
-
-      <a href="https://sun.eduzz.com/60E2B216W3" class="btn-primary" style="width:100%; justify-content:center; font-size:17px; padding:20px;">
-        QUERO MEU CÃO MAIS CALMO E OBEDIENTE
-      </a>
-
-      <div class="guarantee">
-        <span class="guarantee-icon">🛡️</span>
-        <span>Compra 100% segura.<br>Satisfação garantida ou seu dinheiro de volta.</span>
-      </div>
-    </div>
-  </div>
+<section class="section soft">
+<div class="wrap">
+<h2>Você não precisa descobrir tudo sozinho.</h2>
+<p>O Meu Cão Sem Estresse foi criado justamente para isso.</p>
+<p>Para dar a você um caminho.</p>
+<p>Para você parar de ficar pensando “o que eu faço quando ele fizer isso?” e começar a entender “o que eu posso fazer antes disso acontecer?”.</p>
+<p>O objetivo não é transformar seu cachorro em outro cachorro.</p>
+<p>É ensinar ele a lidar melhor com as situações que hoje fazem ele perder o controle.</p>
+</div>
 </section>
 
-<!-- ============ FAQ NOVO ============ -->
-<section style="padding: 80px 20px; background: var(--dark2);">
-  <div class="container">
-    <div class="text-center reveal" style="margin-bottom: 48px;">
-      <div class="line-accent"></div>
-      <h2 class="section-title">Perguntas <span class="orange">frequentes</span></h2>
-    </div>
-
-    <div style="max-width: 720px; margin: 0 auto;" class="reveal">
-
-      <div class="faq2-item">
-        <button class="faq2-question" aria-expanded="false">
-          <span class="faq2-plus" aria-hidden="true">+</span>
-          Preciso ter experiência ou conhecimento em adestramento?
-        </button>
-        <div class="faq2-answer">Não precisa. O programa foi criado para pessoas comuns. As atividades são explicadas em vídeos, fotos e textos passo a passo para que qualquer pessoa consiga aplicar no dia a dia, mesmo sem experiência prévia.</div>
-      </div>
-
-      <div class="faq2-item">
-        <button class="faq2-question" aria-expanded="false">
-          <span class="faq2-plus" aria-hidden="true">+</span>
-          Funciona para qualquer raça e idade?
-        </button>
-        <div class="faq2-answer">Sim, funciona. O programa é baseado em ciência comportamental canina e funciona independentemente da raça, tamanho ou idade do seu cão, desde que ele seja saudável.</div>
-      </div>
-
-      <div class="faq2-item">
-        <button class="faq2-question" aria-expanded="false">
-          <span class="faq2-plus" aria-hidden="true">+</span>
-          Funciona mesmo para cães muito agitados ou teimosos?
-        </button>
-        <div class="faq2-answer">Sim, funciona. Mesmo cães mais agitados, teimosos ou que parecem "não prestar atenção" conseguem evoluir quando você usa as atividades certas e cria mais clareza na comunicação com eles.</div>
-      </div>
-
-      <div class="faq2-item">
-        <button class="faq2-question" aria-expanded="false">
-          <span class="faq2-plus" aria-hidden="true">+</span>
-          Preciso de horas de treino por dia?
-        </button>
-        <div class="faq2-answer">Não precisa. A maioria das atividades leva entre 5 e 10 minutos e se encaixam facilmente no dia a dia.</div>
-      </div>
-
-      <div class="faq2-item">
-        <button class="faq2-question" aria-expanded="false">
-          <span class="faq2-plus" aria-hidden="true">+</span>
-          Preciso de algum equipamento especial?
-        </button>
-        <div class="faq2-answer">Não precisa. Você só vai precisar de uma guia, petiscos e alguns objetos que provavelmente já tem em casa.</div>
-      </div>
-
-      <div class="faq2-item">
-        <button class="faq2-question" aria-expanded="false">
-          <span class="faq2-plus" aria-hidden="true">+</span>
-          Em quanto tempo meu cão pode começar a mudar?
-        </button>
-        <div class="faq2-answer">Muitas pessoas já percebem diferenças nas primeiras semanas, principalmente em foco, atenção e calma no dia a dia. Mas a evolução depende da frequência das atividades e da rotina de cada cão.</div>
-      </div>
-
-      <div class="faq2-item">
-        <button class="faq2-question" aria-expanded="false">
-          <span class="faq2-plus" aria-hidden="true">+</span>
-          As atividades substituem os passeios?
-        </button>
-        <div class="faq2-answer">Não substituem. Os passeios continuam sendo importantes para o bem-estar do seu cão. As atividades funcionam como complemento para desenvolver obediência, calma, autocontrole e conexão, ajudando seu cão a aproveitar melhor os momentos com você.</div>
-      </div>
-
-      <div class="faq2-item">
-        <button class="faq2-question" aria-expanded="false">
-          <span class="faq2-plus" aria-hidden="true">+</span>
-          Como vou acessar o programa após a compra?
-        </button>
-        <div class="faq2-answer">O programa é 100% online e você recebe acesso imediato após a compra. Após a confirmação do pagamento, você recebe por e-mail os dados de acesso à plataforma Nutror/Eduzz. As atividades são organizadas por módulos e níveis de dificuldade, com explicações em vídeos, fotos e textos. Você pode acessar quando quiser, no seu ritmo, pelo celular, tablet ou computador.</div>
-      </div>
-
-      <div class="faq2-item">
-        <button class="faq2-question" aria-expanded="false">
-          <span class="faq2-plus" aria-hidden="true">+</span>
-          Por quanto tempo terei acesso?
-        </button>
-        <div class="faq2-answer">Seu acesso fica ativo enquanto sua assinatura estiver em dia. Você pode acessar todas as atividades na plataforma quando e quantas vezes quiser, incluindo novas atualizações e conteúdos extras, e pode cancelar quando quiser, sem multa ou burocracia.</div>
-      </div>
-
-      <div class="faq2-item">
-        <button class="faq2-question" aria-expanded="false">
-          <span class="faq2-plus" aria-hidden="true">+</span>
-          E se eu tiver dúvidas?
-        </button>
-        <div class="faq2-answer">Você pode deixar suas dúvidas diretamente nas aulas, e o Diego responde pessoalmente dentro da plataforma.</div>
-      </div>
-
-      <div class="faq2-item">
-        <button class="faq2-question" aria-expanded="false">
-          <span class="faq2-plus" aria-hidden="true">+</span>
-          E se eu não gostar? Tem garantia?
-        </button>
-        <div class="faq2-answer">Sim! Você tem 7 dias após a compra para solicitar o reembolso completo, sem perguntas e sem burocracia.</div>
-      </div>
-
-    </div>
-  </div>
+<section class="section" id="oferta">
+<div class="wrap">
+<div class="offer">
+<div class="name">MEU CÃO SEM ESTRESSE</div>
+<h2>Comece a trabalhar o comportamento do seu cão.</h2>
+<ul style="text-align:left">
+<li>Aulas curtas e práticas</li>
+<li>Exercícios para aplicar no dia a dia</li>
+<li>Estratégias para cães nervosos, estressados e reativos</li>
+<li>Treinamentos para diferentes tipos de gatilhos</li>
+<li>Um caminho para você saber o que fazer antes da reação</li>
+</ul>
+<p style="font-size:20px;margin:10px 0 2px;">Por apenas</p>
+<div style="font-size:18px;line-height:1.15;margin-top:8px;">12x de</div>
+<div class="price">R$ 10,34</div>
+<div style="font-size:20px;font-weight:700;margin-top:-4px;">ou R$ 100,00 à vista</div>
+<p class="note" style="margin-top:10px;">acesso imediato · pagamento seguro</p>
+<a class="btn" href="https://chk.eduzz.com/E0DK6JJY91">QUERO COMEÇAR AGORA</a>
+</div>
+</div>
 </section>
 
-<style>
-  .faq2-item {
-    border-bottom: 1px solid rgba(90,107,45,0.20);
-  }
-  .faq2-item:last-child { border-bottom: none; }
-  .faq2-question {
-    width: 100%;
-    background: none;
-    border: none;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 20px 4px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: #3B4D1E;
-    cursor: pointer;
-    text-align: left;
-    transition: color .2s;
-  }
-  .faq2-question:hover { color: #5A6B2D; }
-  .faq2-plus {
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: #5A6B2D;
-    flex-shrink: 0;
-    transition: transform .25s;
-    line-height: 1;
-  }
-  .faq2-item.open .faq2-plus { transform: rotate(45deg); }
-  .faq2-answer {
-    max-height: 0;
-    overflow: hidden;
-    padding-left: 32px;
-    padding-right: 4px;
-    font-size: 16px;
-    color: #4B3C1E;
-    line-height: 1.7;
-    transition: max-height .3s ease, padding-bottom .3s;
-  }
-  .faq2-item.open .faq2-answer { max-height: 400px; padding-bottom: 20px; }
-</style>
-
-<script>
-  document.querySelectorAll('.faq2-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq2-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq2-item.open').forEach(el => {
-        el.classList.remove('open');
-        el.querySelector('.faq2-question').setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-</script>
-
-<!-- ============ FINAL CTA ============ -->
-<section class="final-cta">
-  <div class="container reveal">
-    <h2 class="section-title">Transforme seu cão<br><span class="orange">começando hoje</span></h2>
-    <p class="section-subtitle">Um programa completo que realmente funciona.<br>Apenas <strong style="color:var(--orange); font-weight:800; font-size:1.15em;">R$ 27,00 por mês</strong>, cancele quando quiser.</p>
-    <a href="https://sun.eduzz.com/60E2B216W3" class="btn-primary btn-cta-final" style="font-size:18px; padding:22px 56px;">
-      QUERO MEU CÃO MAIS CALMO E OBEDIENTE
-    </a>
-    <p style="margin-top:20px; font-size:16px; color:#4B3C1E;">✅ Acesso imediato &nbsp;·&nbsp; 🛡️ Pagamento seguro &nbsp;·&nbsp; 🔄 7 dias de garantia</p>
-  </div>
-</section>
-
-<!-- OTIMIZAÇÃO 6: fechamento da tag <main> -->
-</main>
-
-<!-- ===== QUEM É DIEGO LIMA ===== -->
-<section class="about-section">
-  <div class="about-card">
-    <div class="about-inner">
-
-      <div class="about-photo-col">
-        <img
-          src="https://canilmeucaoeducado.github.io/meucaoeducado/preview.webp"
-          alt="Diego Lima — Veterinário e Especialista em Comportamento Canino"
-          width="300"
-          height="380"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-
-      <div class="about-text-col">
-        <span class="about-eyebrow">Diego Lima — Veterinário e Especialista em Comportamento Canino</span>
-        <h2 class="about-name" style="font-size:clamp(1rem,3.5vw,1.25rem);margin-bottom:12px;font-weight:800;color:var(--white);line-height:1.3;">Por que eu criei o Programa Meu Cão Educado</h2>
-        <p class="about-bio" style="margin-bottom:10px;">Durante anos atendendo cães hiperativos e ansiosos, percebi que a maioria das pessoas achava que a solução era passear mais. Mas o problema é que mais passeios vão apenas deixar esses cães mais condicionados fisicamente, porém ainda agitados em casa.</p>
-        <p class="about-bio" style="margin-bottom:8px;">O que esses cães precisam é de atividades que trabalhem o corpo e o cérebro, com foco e autocontrole. Quando isso acontece, o cão fica mais calmo, mais obediente e mais fácil de conviver, sem precisar aumentar os passeios.</p>
-        <p class="about-bio" style="margin-bottom:14px;"></p>
-        <ul class="about-items">
-          <li class="about-item"><div class="about-icon"></div><div class="about-item-text">Veterinário desde 2006</div></li>
-          <li class="about-item"><div class="about-icon"></div><div class="about-item-text">Trabalhando com comportamento desde 2008</div></li>
-          <li class="about-item"><div class="about-icon"></div><div class="about-item-text">Experiência com cães de diferentes perfis comportamentais</div></li>
-          <li class="about-item"><div class="about-icon"></div><div class="about-item-text">Método sem punição e sem intimidação</div></li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<style>
-  .about-section { padding: 8px 20px 60px; background: var(--dark); }
-  .about-card { max-width: 700px; margin: 0 auto; background: var(--dark2); border: 1.5px solid rgba(90,107,45,0.25); border-radius: 20px; overflow: hidden; position: relative; }
-  .about-inner { display: flex; align-items: stretch; gap: 0; }
-  .about-photo-col { flex: 0 0 42%; position: relative; min-height: 380px; }
-  .about-photo-col img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
-  .about-text-col { flex: 1; padding: 28px 24px 28px 22px; display: flex; flex-direction: column; justify-content: center; gap: 0; }
-  .about-eyebrow { display: block; font-size: 1rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #3B4D1E; margin-bottom: 8px; line-height: 1.4; }
-  .about-bio { font-size: 1rem; line-height: 1.6; color: #4B3C1E; margin-bottom: 18px; }
-  .about-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .about-item { display: flex; align-items: flex-start; gap: 10px; }
-  .about-icon { width: 8px; height: 8px; min-width: 8px; background: #5A6B2D; border-radius: 50%; margin-top: 6px; opacity: .85; flex-shrink: 0; }
-  .about-item-text { font-size: 1rem; line-height: 1.55; color: #3B4D1E; }
-  .about-item-text strong { color: #3B4D1E; font-weight: 700; }
-  @media (max-width: 768px) {
-    .about-inner { flex-direction: column; }
-    .about-photo-col { flex: none; min-height: 0; height: 280px; max-height: 280px; }
-    .about-photo-col img { height: 100%; }
-    .about-text-col { padding: 20px 18px 24px; }
-  }
-</style>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-  <p>© 2024 Diego Lima • Veterinário Especialista em Comportamento Canino. Todos os direitos reservados.</p>
-</footer>
-
-<!-- ============ STICKY BAR ============ -->
-
-<script>
-  // FAQ toggle
-  function toggleFaq(btn) {
-    const item = btn.parentElement;
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
-  }
-
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => observer.observe(el));
-
-  // Vídeo depoimento Rosangela — play/pause com clique
-  function toggleVideoRosangela(card) {
-    const video = document.getElementById('videoRosangela');
-    const btn = document.getElementById('playBtnRosangela');
-    if (!video || !btn) return;
-    if (video.paused) {
-      video.play();
-      btn.style.opacity = '0';
-      btn.style.pointerEvents = 'none';
-    } else {
-      video.pause();
-      btn.style.opacity = '1';
-      btn.style.pointerEvents = 'auto';
-    }
-  }
-  const videoRosangela = document.getElementById('videoRosangela');
-  if (videoRosangela) {
-    videoRosangela.addEventListener('ended', () => {
-      const btn = document.getElementById('playBtnRosangela');
-      if (btn) { btn.style.opacity = '1'; btn.style.pointerEvents = 'auto'; }
-    });
-  }
-
-  // Vídeo Pastor Belga — play/pause com clique
-  function toggleVideoPastorBelga() {
-    const video = document.getElementById('videoPastorBelga');
-    const btn = document.getElementById('playBtnPastorBelga');
-    if (!video || !btn) return;
-    if (video.paused) {
-      video.play();
-      btn.style.opacity = '0';
-      btn.style.pointerEvents = 'none';
-    } else {
-      video.pause();
-      btn.style.opacity = '1';
-      btn.style.pointerEvents = 'auto';
-    }
-  }
-  const videoPastorBelga = document.getElementById('videoPastorBelga');
-  if (videoPastorBelga) {
-    videoPastorBelga.addEventListener('ended', () => {
-      const btn = document.getElementById('playBtnPastorBelga');
-      if (btn) { btn.style.opacity = '1'; btn.style.pointerEvents = 'auto'; }
-    });
-  }
-</script>
+<footer>© 2026 Meu Cão Sem Estresse · Diego Lima<br>Todos os direitos reservados.</footer>
 </body>
 </html>
