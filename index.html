@@ -370,6 +370,45 @@ img, video, iframe {
   }
 }
 </style>
+
+
+
+
+<style>
+/* Fundos alternados: Hero branco; primeira seção de conteúdo verde claro */
+header.hero {
+  background: #ffffff !important;
+  color: #111 !important;
+}
+
+body > section:nth-of-type(odd) {
+  background: #dcebd2 !important;
+  color: #111 !important;
+}
+
+body > section:nth-of-type(even) {
+  background: #ffffff !important;
+  color: #111 !important;
+}
+
+/* Mantém textos legíveis nos fundos verdes */
+body > section:nth-of-type(odd) h2,
+body > section:nth-of-type(odd) h3,
+body > section:nth-of-type(odd) p,
+body > section:nth-of-type(odd) li,
+body > section:nth-of-type(odd) .quote {
+  color: #111 !important;
+}
+
+body > section:nth-of-type(odd) .quote {
+  border-left-color: #31501f !important;
+}
+
+body > section:nth-of-type(odd) .green {
+  color: #31501f !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -395,7 +434,7 @@ img, video, iframe {
 </div>
 </section>
 
-<section class="section soft">
+<section class="section">
 <div class="wrap">
 <h2>O problema pode estar no momento em que você tenta resolver.</h2>
 <p>Eu conheço bem esse problema porque é exatamente esse tipo de situação que eu vejo nos meus atendimentos.</p>
@@ -417,7 +456,7 @@ img, video, iframe {
 </div>
 </section>
 
-<section class="section soft">
+<section class="section">
 <div class="wrap">
 <h2>O que você vai encontrar dentro do programa</h2>
 <ul>
@@ -442,16 +481,7 @@ img, video, iframe {
 </div>
 </section>
 
-<section class="section soft">
-<div class="wrap">
-<h2>Você não precisa descobrir tudo sozinho.</h2>
-<p>O Meu Cão Sem Estresse foi criado justamente para isso.</p>
-<p>Para dar a você um caminho.</p>
-<p>Para você parar de ficar pensando “o que eu faço quando ele fizer isso?” e começar a entender “o que eu posso fazer antes disso acontecer?”.</p>
-<p>O objetivo não é transformar seu cachorro em outro cachorro.</p>
-<p>É ensinar ele a lidar melhor com as situações que hoje fazem ele perder o controle.</p>
-</div>
-</section>
+
 
 <section class="section" id="oferta">
 <div class="wrap">
