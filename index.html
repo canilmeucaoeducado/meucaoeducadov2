@@ -7,11 +7,11 @@
 <title>Meu Cão Sem Estresse — Diego Lima, Veterinário</title>
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Seu cão não precisa viver no limite.">
+<meta property="og:title" content="Seu cão não precisa viver estressado.">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Meu Cão Sem Estresse">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Seu cão não precisa viver no limite.">
+<meta name="twitter:title" content="Seu cão não precisa viver estressado.">
 <meta name="twitter:description" content="Um programa prático para ajudar seu cão a lidar melhor com medo, estresse, reatividade e situações que fazem ele perder o controle.">
 <meta name="description" content="Um programa prático para ajudar seu cão a lidar melhor com medo, estresse, reatividade e situações que fazem ele perder o controle.">
 
@@ -412,6 +412,40 @@
 
     .about-card { padding: 26px 20px; }
   }
+
+/* ========== VÍDEO DE APRESENTAÇÃO ========== */
+.sales-video-wrap {
+  width: min(760px, 100%);
+  margin: 30px auto 0;
+  text-align: center;
+}
+.sales-video-intro {
+  font-size: clamp(18px, 2vw, 21px);
+  line-height: 1.45;
+  color: #4B3C1E;
+  max-width: 680px;
+  margin: 0 auto 18px;
+}
+.sales-video {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 10px;
+  background: #000;
+  box-shadow: 0 12px 30px rgba(0,0,0,.16);
+}
+@media (max-width: 768px) {
+  .sales-video-wrap { margin-top: 24px; }
+  .sales-video-intro {
+    font-size: 17px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .sales-video { border-radius: 8px; }
+}
+
 </style>
 
 <!-- Meta Pixel -->
@@ -453,11 +487,22 @@ window.addEventListener('load', function() {
 
   <div class="badge">Programa Meu Cão Sem Estresse</div>
 
-  <h1 class="hero-title">Seu cão não precisa viver <span class="orange">no limite.</span></h1>
+  <h1 class="hero-title">Seu cão não precisa viver <span class="orange">estressado.</span></h1>
 
-  <p class="hero-sub">Um programa prático para ajudar seu cão a lidar melhor com medo, estresse, reatividade e situações que fazem ele perder o controle.</p>
+  
 
-  <p style="margin-top:16px; font-size:16px; color:#4B3C1E; text-align:center;">Criado por <strong>Diego Lima</strong> · Veterinário Especialista em Comportamento Canino</p>
+  
+
+
+<div class="sales-video-wrap">
+  <p class="sales-video-intro">
+    Assista ao vídeo de 3 minutos e descubra como o Meu Cão Sem Estresse pode ajudar você a entender o que está acontecendo com seu cão e saber o que fazer antes da reação.
+  </p>
+  <video class="sales-video" controls playsinline preload="metadata">
+    <source src="https://canilmeucaoeducado.github.io/meucaoeducadov2/video%20vendas%20meu%20cao%20sem%20estresse.mp4" type="video/mp4">
+    Seu navegador não consegue reproduzir este vídeo.
+  </video>
+</div>
 
   <div class="hero-cta">
     <a href="#oferta" class="btn-primary">QUERO AJUDAR MEU CÃO <span class="btn-arrow">→</span></a>
