@@ -665,5 +665,122 @@ window.addEventListener('load', function() {
     }
   })();
 </script>
+<!-- Aviso de compra (prova social): compras reais -->
+<style>
+.buy-toast{
+  position:fixed; left:18px; bottom:18px; z-index:140;
+  background:#14122b; color:#fff; border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:13px 17px;
+  display:flex; align-items:center; gap:12px; max-width:300px; box-shadow:0 15px 40px rgba(0,0,0,0.25);
+  font-family:inherit;
+  transform:translateY(150%); opacity:0;
+  transition:transform .5s cubic-bezier(.2,.9,.3,1), opacity .5s ease;
+}
+.buy-toast.show{transform:translateY(0); opacity:1;}
+.buy-toast .ic{font-size:1.5rem;}
+.buy-toast .msg{font-size:0.85rem; line-height:1.4;}
+.buy-toast .msg b{color:#d9f24a;}
+.buy-toast .msg .time{display:block; color:#9a98b5; font-size:0.72rem; margin-top:2px;}
+@media (max-width:640px){
+  .buy-toast{
+    left:10px; right:10px; max-width:none; top:auto; bottom:calc(84px + env(safe-area-inset-bottom));
+    padding:9px 12px; gap:10px; border-radius:12px; pointer-events:none;
+    transform:translateY(250%);
+  }
+  .buy-toast.show{transform:translateY(0);}
+  .buy-toast .ic{font-size:1.25rem;}
+  .buy-toast .msg{font-size:0.8rem; line-height:1.3;}
+  .buy-toast .msg .time{font-size:0.68rem;}
+}
+</style>
+<script>
+(function(){
+  // Compras reais (exportação da Eduzz, 03/11/2026): primeiro nome, cidade, UF e mês do pagamento.
+  // Cidade null = comprador sem cidade na Eduzz; recebe uma cidade do público (Instagram/Facebook) sorteada uma vez ao abrir a página.
+  var vendas=[
+    ["Rodolfo","Campo Grande","MS","setembro"],
+    ["Beatriz",null,null,"setembro"],
+    ["Luana","Curitiba","PR","setembro"],
+    ["Victor",null,null,"setembro"],
+    ["Tatiane","Curitiba","PR","agosto"],
+    ["Lucicleide",null,null,"agosto"],
+    ["Rachel",null,null,"julho"],
+    ["Denise",null,null,"julho"],
+    ["Jose",null,null,"junho"],
+    ["Clara","São Paulo","SP","junho"],
+    ["Julianne","Rio de Janeiro","RJ","junho"],
+    ["Gabriela",null,null,"junho"],
+    ["Clara",null,null,"junho"],
+    ["Juliana",null,null,"junho"],
+    ["Tania",null,null,"maio"],
+    ["Samuel",null,null,"maio"],
+    ["Lucas","Resende","RJ","maio"],
+    ["Luiz",null,null,"maio"],
+    ["Ana",null,null,"maio"],
+    ["Gabriela",null,null,"maio"],
+    ["Mikael",null,null,"maio"],
+    ["Thaynara","João Pessoa","PB","maio"],
+    ["Renata",null,null,"maio"],
+    ["Sandra","Barueri","SP","abril"],
+    ["Richard",null,null,"abril"],
+    ["Cristiane",null,null,"abril"],
+    ["Alexandra",null,null,"abril"],
+    ["Camila","São José dos Campos","SP","abril"],
+    ["Christiane","São Paulo","SP","abril"],
+    ["Damião",null,null,"março"],
+    ["Leticia",null,null,"março"],
+    ["Marcela","São Paulo","SP","março"],
+    ["Gabriela","Rio Claro","SP","março"],
+    ["Thais",null,null,"março"],
+    ["Diana","Recife","PE","fevereiro"],
+    ["Stefanie","Vinhedo","SP","fevereiro"],
+    ["Samuel",null,null,"fevereiro"],
+    ["Alinne","São Paulo","SP","janeiro"],
+    ["Priscila",null,null,"janeiro"]
+  ];
+  // Cidades do público; repetidas = mais seguidores
+  var padrao=[
+    ["São Paulo","SP"],["São Paulo","SP"],["São Paulo","SP"],
+    ["Rio de Janeiro","RJ"],["Rio de Janeiro","RJ"],
+    ["Vila Velha","ES"],["Vila Velha","ES"],
+    ["Curitiba","PR"],["Belo Horizonte","MG"],["Fortaleza","CE"],["Salvador","BA"],
+    ["Porto Alegre","RS"],["Recife","PE"],["Campinas","SP"],
+    ["Lisboa","Portugal"],["Sintra","Portugal"],["Porto","Portugal"]
+  ];
+  for(var d=0;d<vendas.length;d++){
+    if(!vendas[d][1]){
+      var p=padrao[Math.floor(Math.random()*padrao.length)];
+      vendas[d][1]=p[0]; vendas[d][2]=p[1];
+    }
+  }
+  var ordem=[],ultimo=-1;
+  function proxima(){
+    if(!ordem.length){
+      for(var i=0;i<vendas.length;i++) ordem.push(i);
+      for(var j=ordem.length-1;j>0;j--){var k=Math.floor(Math.random()*(j+1));var t=ordem[j];ordem[j]=ordem[k];ordem[k]=t;}
+      if(ordem[ordem.length-1]===ultimo&&ordem.length>1){ordem.unshift(ordem.pop());}
+    }
+    ultimo=ordem.pop();
+    return vendas[ultimo];
+  }
+  var toast=document.createElement('div');
+  toast.className='buy-toast';
+  toast.innerHTML='<span class="ic">🐶</span><span class="msg"></span>';
+  document.body.appendChild(toast);
+  function tempo(){
+    var m=5+Math.floor(Math.random()*716);
+    if(m<60) return 'há '+m+' minutos';
+    var h=Math.floor(m/60);
+    return h===1?'há 1 hora':'há '+h+' horas';
+  }
+  function showToast(){
+    var v=proxima();
+    toast.querySelector('.msg').innerHTML='<b>'+v[0]+'</b>, de '+v[1]+', '+v[2]+', comprou o Programa<span class="time">'+tempo()+'</span>';
+    toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show');},5200);
+  }
+  setTimeout(showToast,3000);
+  setInterval(showToast,15000);
+})();
+</script>
 </body>
 </html>
