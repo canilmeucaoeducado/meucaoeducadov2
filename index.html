@@ -451,6 +451,168 @@
   .sales-video { border-radius: 8px; }
 }
 
+
+
+/* Vídeo vertical do caso real — proporção 9:16 */
+.sales-video-vertical {
+  width: min(100%, 420px);
+  max-width: 420px;
+  aspect-ratio: 9 / 16;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .sales-video-vertical {
+    width: min(100%, 380px);
+    max-width: 380px;
+    border-radius: 8px;
+  }
+}
+
+/* ========== PRICING — VISUAL DA PÁGINA MAIS DE 60 ATIVIDADES ========== */
+.stress-pricing-section {
+  padding: 82px 20px;
+  background: #E7EFFF;
+  text-align: center;
+}
+.stress-pricing-container {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+}
+.stress-pricing-intro {
+  max-width: 790px;
+  margin: 0 auto;
+}
+.stress-pricing-eyebrow {
+  color: #E05A27;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.stress-pricing-title {
+  color: #10265F;
+  font-family: 'Outfit', Arial, sans-serif;
+  font-size: clamp(30px, 4.2vw, 48px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -.025em;
+  margin: 0 0 18px;
+}
+.stress-pricing-subtitle {
+  color: #263B63;
+  font-size: 19px;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.stress-price-card {
+  width: min(100%, 558px);
+  margin: 32px auto 0;
+  padding: 34px 34px 42px;
+  background: #FFFFFF;
+  border: 1px solid #E05A27;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(16,38,95,.08);
+}
+.stress-price-eyebrow {
+  color: #E05A27;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+.stress-price-value {
+  color: #10265F;
+  font-family: 'Outfit', Arial, sans-serif;
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.03em;
+  margin: 0 0 4px;
+}
+.stress-price-euro {
+  color: #E05A27;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 14px;
+}
+.stress-price-payment {
+  color: #10265F;
+  font-size: 17px;
+  margin: 0 0 24px;
+}
+.stress-price-includes {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin: 0 0 34px;
+  padding: 0;
+  text-align: left;
+}
+.stress-price-includes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #10265F;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.stress-price-includes li::before {
+  content: '✓';
+  color: #E05A27;
+  font-weight: 800;
+  flex: 0 0 auto;
+}
+.stress-price-button {
+  display: flex;
+  width: 100%;
+  min-height: 56px;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 22px;
+  border-radius: 7px;
+  background: #E05A27;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: 'Outfit', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.3;
+  box-shadow: 0 8px 24px rgba(224,90,39,.25);
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.stress-price-button:hover {
+  background: #B8441B;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(224,90,39,.3);
+}
+.stress-price-security {
+  color: #263B63;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 12px 0 0;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .stress-pricing-section { padding: 58px 16px; }
+  .stress-pricing-title { font-size: clamp(27px, 7vw, 36px); }
+  .stress-pricing-subtitle { font-size: 16px; line-height: 1.6; }
+  .stress-price-card {
+    margin-top: 26px;
+    padding: 28px 20px 30px;
+    border-radius: 14px;
+  }
+  .stress-price-includes { gap: 11px; margin-bottom: 28px; }
+  .stress-price-includes li { font-size: 15px; }
+  .stress-price-button { min-height: 54px; font-size: 14px; }
+}
+
 </style>
 
 <!-- Meta Pixel -->
@@ -514,7 +676,7 @@ window.addEventListener('load', function() {
 </div>
 
   <div class="hero-cta">
-    <a href="https://chk.eduzz.com/E0DK6JJY91" class="btn-primary">QUERO COMEÇAR AGORA!</a>
+    <a href="#oferta" class="btn-primary">QUERO COMEÇAR AGORA!</a>
   </div>
 
 </section>
@@ -533,6 +695,21 @@ window.addEventListener('load', function() {
       <p>E talvez você já tenha tentado de tudo. Petisco, comando, puxão na guia, falar mais alto, distrair, evitar os lugares, mudar o horário do passeio.</p>
     </div>
     <div class="quote-block">E mesmo assim, quando aparece aquele gatilho, parece que tudo desaparece.<br>Seu cachorro não te escuta.</div>
+  </div>
+</section>
+
+<!-- ============ VÍDEO: EXEMPLO DE REATIVIDADE ============ -->
+<section class="content-section" style="padding: 72px 20px; background: var(--dark2);">
+  <div class="container reveal" style="max-width: 900px; text-align: center;">
+    <h2 class="section-title" style="margin-bottom: 16px;">
+      Veja esse caso real
+    </h2>
+    <div class="sales-video-wrap">
+      <video class="sales-video sales-video-vertical" controls playsinline preload="metadata">
+        <source src="https://canilmeucaoeducado.github.io/meucaoeducadov2/boris_collie_reativo.mp4" type="video/mp4">
+        Seu navegador não consegue reproduzir este vídeo.
+      </video>
+    </div>
   </div>
 </section>
 
@@ -584,20 +761,29 @@ window.addEventListener('load', function() {
   </div>
 </section>
 
-<!-- ============ NÃO ESPERE PIORAR ============ -->
-<section class="forwhom-section content-section reveal" id="oferta">
-  <div class="container text-center" style="max-width: 700px; margin: 0 auto;">
-    <h2 class="section-title">Não espere seu cachorro <span class="orange">piorar para começar.</span></h2>
-    <p style="margin-bottom: 0;">Quanto mais ele repete esse mau comportamento, mais enraizado ele vai ficando na mente dele.</p>
-    <div style="max-width: 520px; margin: 36px auto 0;">
-      <a href="https://chk.eduzz.com/E0DK6JJY91" class="btn-primary" style="width:100%; justify-content:center;">QUERO COMEÇAR AGORA!</a>
-      <div class="guarantee" style="justify-content:center; text-align:left;">
-        <ul style="list-style: disc; padding-left: 20px; margin: 0; text-align: left; line-height: 1.6;">
-          <li>Acesso por 2 anos</li>
-          <li>Pagamento 100% seguro</li>
-          <li>7 Dias de garantia</li>
-        </ul>
-      </div>
+<!-- ============ PRICING / OFERTA ============ -->
+<section class="stress-pricing-section content-section reveal" id="oferta">
+  <div class="stress-pricing-container">
+    <div class="stress-pricing-intro">
+      <div class="stress-pricing-eyebrow">Comece hoje</div>
+      <h2 class="stress-pricing-title">Não espere seu cachorro piorar para começar.</h2>
+      <p class="stress-pricing-subtitle">Quanto mais ele repete esse mau comportamento, mais enraizado ele vai ficando na mente dele.</p>
+    </div>
+
+    <div class="stress-price-card">
+      <div class="stress-price-eyebrow">Acesso ao programa completo</div>
+      <div class="stress-price-value">R$ 197</div>
+      <div class="stress-price-euro">Cerca de 32 euros</div>
+      <div class="stress-price-payment">Pagamento único</div>
+      <ul class="stress-price-includes">
+        <li>Treinos práticos para reatividade, insegurança e medos</li>
+        <li>Aulas em vídeo, imagens e textos</li>
+        <li>Acesso por 2 anos</li>
+        <li>Acesso online e imediato após a confirmação do pagamento</li>
+        <li>7 dias de garantia</li>
+      </ul>
+      <a href="https://chk.eduzz.com/E0DK6JJY91" class="stress-price-button">QUERO COMEÇAR AGORA</a>
+      <p class="stress-price-security">Compra processada em ambiente seguro pela Eduzz.</p>
     </div>
   </div>
 </section>
